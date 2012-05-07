@@ -1,0 +1,6 @@
+# Application dependencies
+
+require:
+    - play 1.2.4
+    - play -> cloudbees 0.2.2
+    - play -> messages 1.3

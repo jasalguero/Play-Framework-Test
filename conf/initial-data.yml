@@ -1,0 +1,15 @@
+ Country(global):
+   name : GLOBAL
+ 
+ Country(germany):
+   name : GERMANY
+   
+ Country(portugal):
+   name : PORTUGAL
+   
+ User(test):
+    email : test@senseship.com
+    password : 123
+    username : test
+    country: global 
+ 

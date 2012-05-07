@@ -1,0 +1,79 @@
+#{extends 'main.html' /}
+#{set title:'Create New Project' /}
+
+<div class="row">
+	<div class="span8 page-header">
+		<h1>&{'views.project.new.header'}</h1>
+	</div>
+</div>
+
+<div class="span10">
+	#{form @ProjectController.createProject(), class:'form-horizontal well'}
+ 		<fieldset>
+    		<legend>&{'views.general.basicInfo'}</legend>
+    		
+    		<!-- PROJECT NAME -->
+    		#{field 'project.name'}
+			<div class="control-group #{twErrorClass field.name/}">
+		      <label class="control-label" for="&{field.name}">&{'views.project.name'}</label>
+		      <div class="controls">
+		     	<input type="text" class="input-xlarge" id="name" name="${field.name}" value="${field.value}" placeholder="&{'views.project.name.info'}"/>
+		     	<span class="help-inline">#{error field.name /}</span>
+		      </div>
+		     </div>
+		     #{/}
+		     
+		     
+		     <!-- HEADLINE -->
+		     #{field 'project.headline'}
+		     <div class="control-group #{twErrorClass field.name/}">
+		      <label class="control-label" for="&{field.name}" >&{'views.project.headline'}</label>
+		      <div class="controls">
+		      	<textarea class="input-xlarge" id="headline" name="${field.name}" rows="3" placeholder="&{'views.project.headline.info'}">${field.value}</textarea>
+		      	<span class="help-inline">#{error field.name /}</span>
+		      </div>
+		     </div>
+		     #{/}
+		     
+		     <!-- DESCRIPTION -->
+		     #{field 'project.description'}
+		     <div class="control-group #{twErrorClass field.name/}">
+		      <label class="control-label" for="&{field.name}" >&{'views.project.description'}</label>
+		      <div class="controls">
+		      	<textarea class="input-xxlarge" id="description" name="${field.name}" rows="10" placeholder="&{'views.project.description.info'}">${field.value}</textarea>
+		        <span class="help-inline">#{error field.name /}</span>
+		      </div>
+		     </div>
+		      #{/}
+		     		     
+		     <!-- GOAL -->
+		    #{field 'project.goal'}
+			<div class="control-group #{twErrorClass field.name/}">
+		      <label class="control-label" for="&{field.name}" >&{'views.project.goal'}</label>
+		      <div class="controls">
+		     	<input type="text" class="input-xlarge" id="goal" name="${field.name}" value="${field.value}" placeholder="&{'views.project.goal.info'}"/>
+		      	<span class="help-inline">#{error field.name /}</span>
+		      </div>
+		     </div>
+		      #{/}
+		     
+		     <!-- NON Profit -->
+		     #{field 'project.nonProfit'}
+			<div class="control-group #{twErrorClass field.name/}">
+		      <label class="control-label" for="&{field.name}" >&{'views.project.nonProfit'}</label>
+		      <div class="controls">
+		     	 <label class="checkbox">
+   					 <input type="checkbox" id="nonProfit" name="${field.name}" #{if field.value}checked="true"#{/if}>
+   					 <span class="help-inline">&{'views.project.nonProfit.info'}</span> 
+  				</label>
+		      </div>
+		     </div>
+		      #{/}
+		     
+		     
+		     <div class="form-actions">
+           	 <button type="submit" class="btn btn-large btn-primary">&{'views.project.create'}</button>
+          	</div>
+		 </fieldset>
+	#{/form}
+</div>

@@ -1,0 +1,22 @@
+/* HACK FOR COMBO HEIGHT */
+.test {
+	height: 27px !important;
+}
+
+/* FIX WARNING CLOSE BUTTON BORDERS */
+.close {
+	background-color: transparent;
+	border: none;
+}
+
+/* Customization */
+body {
+	background-image: url(/public/images/noise.gif);
+}
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+.sidebar-nav {
+	padding: 9px 0;
+}
