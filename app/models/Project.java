@@ -2,10 +2,11 @@ package models;
 
 import play.*;
 import play.data.validation.Required;
-import play.db.jpa.*;
+import play.modules.morphia.Model;
 
-import javax.persistence.*;
 import java.util.*;
+
+import com.google.code.morphia.annotations.Entity;
 
 @Entity
 public class Project extends Model {

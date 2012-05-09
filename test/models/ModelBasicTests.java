@@ -9,7 +9,7 @@ public class ModelBasicTests extends UnitTest {
 	
 	@Before
 	public void setUp() {
-	    Fixtures.deleteDatabase();
+	    Fixtures.deleteAllModels();
 	    Fixtures.loadModels("data/countries.yml");
 	}
 
@@ -22,7 +22,7 @@ public class ModelBasicTests extends UnitTest {
 		// Test size
 		assertTrue(countryList.size() == 3);
 
-		Country global = Country.findById(1);
+		Country global = Country.find("byName","GLOBAL").first();
 
 		// Test it exists
 		assertEquals(global.name, "GLOBAL");
@@ -32,7 +32,7 @@ public class ModelBasicTests extends UnitTest {
 	public void checkCreateAndRetrieveUser() {
 		
 		// Retrieve country
-		Country global = Country.findById(3);
+		Country global = Country.find("byName","GLOBAL").first();
 
 		// Get user list
 		List<User> beforeList = User.findAll();

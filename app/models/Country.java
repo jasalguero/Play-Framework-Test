@@ -1,27 +1,16 @@
 package models;
 
 import play.*;
-import play.db.jpa.*;
+import play.modules.morphia.Model;
 
-import javax.persistence.*;
 
 import java.util.*;
 
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
+
 @Entity
-public class Country extends GenericModel {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="country_id")
-	public Integer id;
+public class Country extends Model {
 	
 	public String name;
-
-	public Integer getId() {
-		return id;
-	}
-	
-	@Override
-	public Object _key() {
-		return getId();
-	}
 }

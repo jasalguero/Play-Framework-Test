@@ -15,10 +15,10 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.playframework.playclipse.playNature</nature>
 	</natures>
-	<linkedResources><link><name>cloudbees-0.2.2</name><type>2</type><location>/Users/jsalguero/Work/play-1.2.3/modules/cloudbees-0.2.2/app</location></link>
-<link><name>conf/cloudbees-0.2.2</name><type>2</type><location>/Users/jsalguero/Work/play-1.2.3/modules/cloudbees-0.2.2/conf</location></link>
-<link><name>messages-1.3</name><type>2</type><location>/Users/jsalguero/git/senseship/senseship/modules/messages-1.3/app</location></link>
-<link><name>conf/messages-1.3</name><type>2</type><location>/Users/jsalguero/git/senseship/senseship/modules/messages-1.3/conf</location></link>
-<link><name>public/messages-1.3</name><type>2</type><location>/Users/jsalguero/git/senseship/senseship/modules/messages-1.3/public</location></link>
+	<linkedResources><link><name>messages-1.3</name><type>2</type><location>/Users/jsalguero/Dropbox/GitHub/senseship/modules/messages-1.3/app</location></link>
+<link><name>conf/messages-1.3</name><type>2</type><location>/Users/jsalguero/Dropbox/GitHub/senseship/modules/messages-1.3/conf</location></link>
+<link><name>public/messages-1.3</name><type>2</type><location>/Users/jsalguero/Dropbox/GitHub/senseship/modules/messages-1.3/public</location></link>
+<link><name>morphia-1.2.6a</name><type>2</type><location>/Users/jsalguero/Work/play-1.2.4/modules/morphia-1.2.6a/app</location></link>
+<link><name>conf/morphia-1.2.6a</name><type>2</type><location>/Users/jsalguero/Work/play-1.2.4/modules/morphia-1.2.6a/conf</location></link>
 </linkedResources>
 </projectDescription>
