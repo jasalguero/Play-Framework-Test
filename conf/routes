@@ -15,6 +15,7 @@ GET		/projects								ProjectController.projectList
 
 # Application
 GET		/changeLang/{lang}						Application.changeLang
+GET		/images									Application.showImageList
 
 
 # Ignore favicon requests

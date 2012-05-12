@@ -1,62 +1,80 @@
 #{extends 'main.html' /}
-#{set title:'Project' /} 
+#{set title:'Project' /}
 
-<!-- TITLE -->
-<div class="row">
-	<div class="span8 page-header">
-		<h1>${project.name}</h1>
-	</div>
-</div>
-<!-- HEADER -->
-<div class="row">
-	<!-- PHOTO -->
-	<div class="span2">
-		<a href="#" class="thumbnail"> <img src="http://placehold.it/260x260" alt=""></a>
-	</div>
-	<!-- BASIC INFO -->
-	<div class="span7 offset2 well">
-		<h3>Basics</h3>
-		<dl class="dl-horizontal">
-			<dt>Headline: </dt><dd>${project.headline}</dd>
-			<dt>Goal:</dt><dd>${project.goal}</dd>
-			<dt>Description:</dt><dd>${project.description}</dd>
-		</dl>
-	</div>
-</div>
+<div class="container">
 
-<!-- PHOTO CAROUSEL -->
-<div id="projectCarousel" class="carousel span11">
-	<!-- Carousel items -->
-	<div class="carousel-inner">
-		<div class="item active">
-			<img src="http://placehold.it/400x340" alt="">
-			<div class="carousel-caption">
-				<h4>First Photo label</h4>
-				<p>
-					This is the first photo info
-				</p>
-			</div>
-		</div>
-		<div class="item">
-			<img src="http://placehold.it/1200x340" alt="">
-			<div class="carousel-caption">
-				<h4>Second Photo label</h4>
-				<p>
-					This is the second photo info
-				</p>
-			</div>
-		</div>
-		<div class="item">
-			<img src="http://placehold.it/1200x340" alt="">
-			<div class="carousel-caption">
-				<h4>Third Photo label</h4>
-				<p>
-					This is the third photo info
-				</p>
-			</div>
+	<!-- TITLE -->
+	<div class="row">
+		<div class="span8 page-header">
+			<h1>${project.name}</h1>
 		</div>
 	</div>
-	<!-- Carousel nav -->
-	<a class="carousel-control left" href="#projectCarousel" data-slide="prev">&lsaquo;</a>
-	<a class="carousel-control right" href="#projectCarousel" data-slide="next">&rsaquo;</a>
+	<!-- HEADER -->
+	<div class="row">
+		<!-- PHOTO -->
+		<div class="span2">
+			<a href="#" class="thumbnail"> <img src="http://placehold.it/260x260" alt=""></a>
+		</div>
+		<!-- BASIC INFO -->
+		<div class="span7 offset2 well">
+			<h3>Basics</h3>
+			<dl class="dl-horizontal">
+				<dt>
+					Headline:
+				</dt>
+				<dd>
+					${project.headline}
+				</dd>
+				<dt>
+					Goal:
+				</dt>
+				<dd>
+					${project.goal}
+				</dd>
+				<dt>
+					Description:
+				</dt>
+				<dd>
+					${project.description}
+				</dd>
+			</dl>
+		</div>
+	</div>
+
+	<!-- PHOTO CAROUSEL -->
+	<div id="projectCarousel" class="carousel span11">
+		<!-- Carousel items -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="http://placehold.it/400x340" alt="">
+				<div class="carousel-caption">
+					<h4>First Photo label</h4>
+					<p>
+						This is the first photo info
+					</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="http://placehold.it/1200x340" alt="">
+				<div class="carousel-caption">
+					<h4>Second Photo label</h4>
+					<p>
+						This is the second photo info
+					</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="http://placehold.it/1200x340" alt="">
+				<div class="carousel-caption">
+					<h4>Third Photo label</h4>
+					<p>
+						This is the third photo info
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- Carousel nav -->
+		<a class="carousel-control left" href="#projectCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="carousel-control right" href="#projectCarousel" data-slide="next">&rsaquo;</a>
+	</div>
 </div>

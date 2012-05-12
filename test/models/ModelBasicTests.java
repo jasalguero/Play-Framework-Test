@@ -1,21 +1,27 @@
 package models;
 
 import org.junit.*;
+
+import java.io.File;
 import java.util.*;
+
+import play.Logger;
+import play.modules.morphia.Blob;
 import play.test.*;
 import models.*;
 
 public class ModelBasicTests extends UnitTest {
 	
-	@Before
-	public void setUp() {
-	    Fixtures.deleteAllModels();
-	    Fixtures.loadModels("data/countries.yml");
+	@BeforeClass
+	public static void setUp() {
+		Logger.info("Deleting all models");
+		MorphiaFixtures.deleteAllModels();
+		MorphiaFixtures.loadModels("data/countries.yml");
 	}
 
 	@Test
 	public void checkCountries() {
-
+		Logger.info("Inside countries model test");
 		// Retrieve the list of countries
 		List<Country> countryList = Country.findAll();
 
@@ -29,8 +35,8 @@ public class ModelBasicTests extends UnitTest {
 	}
 
 	@Test
-	public void checkCreateAndRetrieveUser() {
-		
+	public void createUser() {
+		Logger.info("Inside user model test");
 		// Retrieve country
 		Country global = Country.find("byName","GLOBAL").first();
 
@@ -50,6 +56,62 @@ public class ModelBasicTests extends UnitTest {
 		
 		admin.delete();
 		assertTrue(beforeList.size() == User.findAll().size());	
+	}
+	
+	@Test
+	public void createProject(){
+		Logger.info("Inside project model test");
+		//Create new project
+		Project project = new Project();
+		
+		//Initialize
+		project.description = "Test description";
+		project.headline = "Test headline";
+		project.name = "Test name";
+		project.nonProfit = true;
+		project.goal = "Test goal";
+		
+		project.save();
+		
+		// Retrieve the project
+		Project storedProject = Project.find("byName", "Test name").first();
+		
+		//Test
+		assertNotNull(storedProject);
+		assertEquals("Test headline", project.headline);
+		assertEquals("Test description", project.description);
+		assertEquals("Test goal", project.goal);
+		assertTrue(project.nonProfit);
+		
+	}
+	
+	@Test
+	public void createImage(){
+		Logger.info("Inside image model test");
+		String textDesc = "Test desc";
+		String textHeadline = "Test headline";
+		
+		//Create new image
+		Image image = new Image();
+		image.description = textDesc;
+		image.headline = textHeadline;
+		image.isMain = true;
+		
+		File file = new File("/Users/jsalguero/Desktop/testImage.jpg");
+		
+		assertNotNull(file);
+		Logger.info("image size", file.length());
+		
+		image.image = new Blob(file,file.getName());
+		image.save();
+		
+		Image newImage = Image.find("byHeadline",textHeadline).first();
+		
+		//Test
+		assertNotNull(newImage);
+		assertEquals(newImage.description, textDesc);
+		assertEquals(newImage.headline, textHeadline);
+		assertNotNull(newImage.image);
 	}
 
 }

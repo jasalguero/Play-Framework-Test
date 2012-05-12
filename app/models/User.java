@@ -6,7 +6,6 @@ import javax.persistence.ManyToOne;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Reference;
 
-import play.db.jpa.GenericModel;
 import play.modules.morphia.Model;
 
 @Entity

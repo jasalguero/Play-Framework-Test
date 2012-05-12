@@ -19,3 +19,6 @@ views.project.name=Name
 views.project.new.header=Create a new Project\!
 views.project.nonProfit.info=Is this a non profit project?
 views.project.nonProfit=Non Profit
+views.project.new.menu.images=Images
+views.project.new.menu.location=Location
+views.project.new.menu.basicInfo=Basic Information

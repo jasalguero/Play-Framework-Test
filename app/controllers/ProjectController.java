@@ -1,10 +1,15 @@
 package controllers;
 
+import java.io.File;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
+import models.Image;
 import models.Project;
 import play.Logger;
 import play.data.validation.Valid;
+import play.modules.morphia.Blob;
 import play.mvc.Controller;
 
 public class ProjectController extends Controller {
@@ -59,8 +64,21 @@ public class ProjectController extends Controller {
     public static void showProject(Long idProject){
     	Logger.debug("Showing project: ", idProject);
     	Project project = Project.findById(idProject);
-    	   	
-    	render("Project/project.html", project);
+    	//Redirect to the list if there's no project
+    	if (project == null){
+    		projectList();
+    	}else{ 	
+    		render("Project/project.html", project);
+    	}
     }
-
+    
+    public static void saveImages(File photo){
+    	Logger.debug("Saving image");
+    	Image image = new Image();
+    	notFoundIfNull(photo);
+		Logger.info("image size %d", photo.length());		
+		image.image = new Blob(photo,photo.getName());
+		image.save();
+		renderJSON(image.getId());	
+    }
 }
