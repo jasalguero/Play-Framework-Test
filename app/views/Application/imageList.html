@@ -1,0 +1,7 @@
+#{extends 'main.html' /}
+#{set title:'List of Images' /}
+#{list images, as:'image'}
+
+ <img src="@{displayImage(image.id)}">
+
+#{/}
