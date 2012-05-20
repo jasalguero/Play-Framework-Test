@@ -1,22 +1,23 @@
-#{form @ProjectController.saveImages(), enctype:'multipart/form-data', id:"formImage"}
+#{form @ProjectController.saveImage(_project._id), enctype:'multipart/form-data', id:"formImage"}
 <fieldset>
 	<legend>
-		&{'views.general.basicInfo'}
+		&{'views.general.images'}
 	</legend>
 
-	<!-- IMAGE -->
-	#{field 'image.headline'}
-	<input type="text" name="${field.name}" id="imageTest"/>
+	#{list _images, as:'image'}
+
+	<img src="@{Application.displayImage(image.id.toString())}">
+
 	#{/}
+
+	<!-- IMAGE -->
 	<input type="file" name="photo" class="file-input">
 
 	<div class="form-actions">
-		<button type="submit" class="btn btn-large btn-primary">
-			&{'views.project.create'}
+		<button type="submit" class="btn btn-primary">
+			&{'project.image.upload'}
 		</button>
 	</div>
-	<label id="labelResult">Nothing</label>
-	<img id="result"/>
 </fieldset>
 #{/form}
 
@@ -27,7 +28,7 @@
 	};
 	$(document).ready(function() {
 		// bind 'myForm' and provide a simple callback function
-		$('#formImage').ajaxForm(options);
+		//$('#formImage').ajaxForm(options);
 		//$('#formImage').ajaxForm(function() {
 		/**$('#result').load(function() {
 		 $(this).unbind('load');
@@ -52,6 +53,6 @@
 	}
 
 	function processResponse(responseText, statusText, xhr, $form) {
-		$('#labelResult').text(responseText);
+		alert(responseText);
 	};
 </script>

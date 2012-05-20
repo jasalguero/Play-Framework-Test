@@ -8,6 +8,7 @@ menu.user.register=Register
 menu.users=Users
 views.general.basicInfo=Basic Information
 views.project.create=Create Project, now\!
+views.project.update=Save changes!
 views.project.description.info=Describe what makes the project special...
 views.project.description=Description
 views.project.goal.info=What is the goal of the project

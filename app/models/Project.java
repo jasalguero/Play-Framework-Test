@@ -12,6 +12,7 @@ import org.bson.types.ObjectId;
 
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.annotations.Reference;
 
 @Entity
 public class Project extends Model {
@@ -28,14 +29,9 @@ public class Project extends Model {
 	@Required
 	public String goal;
 	
-	/*Blob photo;
-	
-	public void setPhoto(File file) {
-        String type = "image/" + S.fileExtension(file.getName());
-        photo = new Blob(file, type);
-        save();
-    }*/
-	
 	public Boolean nonProfit;
+	
+	@Reference
+	public User owner;
 	
 }

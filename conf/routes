@@ -12,6 +12,9 @@ GET     /register								UserController.showForm
 GET     /project								ProjectController.newProject
 GET     /project/{idProject}					ProjectController.showProject
 GET		/projects								ProjectController.projectList
+POST	/project/edit/{idProject}				ProjectController.editProject
+POST	/project								ProjectController.saveProject
+GET		/project/delete/{idProject}				ProjectController.deleteProject
 
 # Application
 GET		/changeLang/{lang}						Application.changeLang

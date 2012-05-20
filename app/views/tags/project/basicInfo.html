@@ -1,9 +1,12 @@
-#{form @ProjectController.createProject()}
+%{project = _project}%
+
+#{form @ProjectController.saveProject()}
 <fieldset>
 	<legend>
 		&{'views.general.basicInfo'}
 	</legend>
 
+	<input type="text" name="project._id" value="${project.id}"/>
 	<!-- PROJECT NAME -->
 	#{field 'project.name'}
 	<div class="control-group #{twErrorClass field.name/}">
@@ -62,7 +65,7 @@
 
 	<div class="form-actions">
 		<button type="submit" class="btn btn-large btn-primary">
-			&{'views.project.create'}
+			&{'views.project.update'}
 		</button>
 	</div>
 </fieldset>

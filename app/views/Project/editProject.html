@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Create New Project' /}
+#{set title:'Edit Project' /}
 
 <div class="container">
 
@@ -8,6 +8,18 @@
 			<h1>&{'views.project.new.header'}</h1>
 		</div>
 	</div>
+	
+	<!-- NOTIFICATION -->
+	#{if flash.success}
+	<div class="row">
+		<div class="alert alert-success fade in">
+			<button class="close" data-dismiss="alert">
+				×
+			</button>
+			&{flash.success}
+		</div>
+	</div>
+	#{/if}
 
 	<div class="row">
 		<div class="span9">
@@ -25,10 +37,10 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="lA">
-						#{project/basicInfo /}
+						#{project/basicInfo project:project /}
 					</div>
 					<div class="tab-pane" id="lB">
-						#{project/images /}
+						#{project/images project:project, images:images /}
 					</div>
 					<div class="tab-pane" id="lC">
 						<p>

@@ -7,9 +7,9 @@
  Country(portugal):
    name : PORTUGAL
    
- User(test):
-    email : test@senseship.com
+ User(admin):
+    email : admin@senseship.com
     password : 123
-    username : test
+    username : admin
     country: global 
  

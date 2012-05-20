@@ -100,7 +100,7 @@ public class ModelBasicTests extends UnitTest {
 		File file = new File("/Users/jsalguero/Desktop/testImage.jpg");
 		
 		assertNotNull(file);
-		Logger.info("image size", file.length());
+		Logger.info("image size %d", file.length());
 		
 		image.image = new Blob(file,file.getName());
 		image.save();
