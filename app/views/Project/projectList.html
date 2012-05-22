@@ -36,13 +36,15 @@
 				</thead>
 				<tbody>
 					#{list items:projects, as:'project'}
+					%{projectId = project.id.toString()}%
+					
 					<tr>
 						<td> ${project.id} </td>
 						<td> ${project.name} </td>
 						<td> ${project.headline} </td>
-						<td> #{a @ProjectController.showProject(project.id.toString())}<i class="icon-search"></i> #{/a} </td>
-						<td> #{a @ProjectController.editProject(project.id.toString())}<i class="icon-edit"></i> #{/a} </td>
-						<td> #{a @ProjectController.deleteProject(project.id.toString())}<i class="icon-trash"></i> #{/a} </td>
+						<td> #{a @@ProjectController.showProject(project.id)}<i class="icon-search"></i> #{/a} </td>
+						<td> #{a @ProjectController.editProject(project.id)}<i class="icon-edit"></i> #{/a} </td>
+						<td> #{a @@ProjectController.deleteProject(project.id)}<i class="icon-trash"></i> #{/a} </td>
 					</tr>
 					#{/}
 				</tbody>

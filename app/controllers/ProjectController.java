@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
+import models.Category;
 import models.Image;
 import models.Project;
 import models.User;
@@ -36,7 +37,8 @@ public class ProjectController extends Controller {
 
 			project.save();
 			Logger.info("New project created with id %s", project.getId());
-			editProject(project);
+			
+			redirect("ProjectController.editProject", project.getId().toString());
 		} else {
 			flash.error("message", "project.creation.error");
 			projectList();
@@ -48,10 +50,10 @@ public class ProjectController extends Controller {
 	 * 
 	 * @param projectId
 	 */
-	public static void editProject(String projectId) {
-		Logger.info("Editing project %s", projectId);
+	public static void editProject(String idProject) {
+		Logger.info("Editing project %s", idProject);
 
-		Project project = Project.findById(projectId);
+		Project project = Project.findById(idProject);
 
 		notFoundIfNull(project);
 		Logger.info("Project %s found", project.getId());
@@ -60,9 +62,16 @@ public class ProjectController extends Controller {
 	}
 
 	private static void editProject(Project project) {
+		Logger.info("Retrieving images for project %s", project.getId()
+				.toString());
 		List<Image> images = Image.find("project", project).asList();
+		Logger.info("%d images retrieved", images.size());
 
-		render("Project/editProject.html", project, images);
+		Logger.info("Retrieving all categories...");
+		List<Category> allCategories = Category.findAll();
+		Logger.info("%d categories retrieved", allCategories.size());
+
+		render("Project/editProject.html", project, images, allCategories);
 	}
 
 	/**
@@ -74,9 +83,9 @@ public class ProjectController extends Controller {
 		Logger.info("Updating project %s", project.getId());
 
 		project.save();
-		flash.success("project.created.successfully");
+		flash.success("project.updated.successfully");
 
-		editProject(project);
+		redirect("ProjectController.editProject", project.getId().toString());
 	}
 
 	/**

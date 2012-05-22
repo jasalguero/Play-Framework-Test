@@ -34,4 +34,7 @@ public class Project extends Model {
 	@Reference
 	public User owner;
 	
+	@Reference
+	public List<Category> categories;
+	
 }

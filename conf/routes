@@ -12,13 +12,15 @@ GET     /register								UserController.showForm
 GET     /project								ProjectController.newProject
 GET     /project/{idProject}					ProjectController.showProject
 GET		/projects								ProjectController.projectList
-POST	/project/edit/{idProject}				ProjectController.editProject
-POST	/project								ProjectController.saveProject
+GET		/project/edit/{idProject}				ProjectController.editProject
+POST	/project/edit							ProjectController.saveProject
 GET		/project/delete/{idProject}				ProjectController.deleteProject
+POST	/project/saveImage						ProjectController.saveImage
 
 # Application
 GET		/changeLang/{lang}						Application.changeLang
 GET		/images									Application.showImageList
+GET		/image/{idImage}						Application.displayImage
 
 
 # Ignore favicon requests
@@ -29,4 +31,4 @@ GET     /public/                                staticDir:public
 
 # Catch all
 *     	/    									module:messages
-*       /{controller}/{action}                  {controller}.{action}
+

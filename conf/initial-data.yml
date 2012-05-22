@@ -12,4 +12,42 @@
     password : 123
     username : admin
     country: global 
+    
+ Category(1):
+    name : Urban Exploring
  
+ Category(2):
+    name : Everyday Life and Culture
+ 
+ Category(3):
+    name : Swapping and Switching
+ 
+ Category(4):
+    name : Collaborative Consumption
+ 
+ Category(5):
+    name : Hang Out and Chat
+
+ Category(6):
+    name : Nature and Gardening
+ 
+ Category(7):
+    name : Sports and Outdoors
+ 
+ Category(8):
+    name : Food and Nutrition
+
+ Category(9):
+    name : Education and Learning
+ 
+ Category(10):
+    name : Integration and Inclusion
+ 
+ Category(11):
+    name : Human Rights
+
+ Category(12):
+    name : Economic Development
+
+ Category(13):
+    name : On Wheels

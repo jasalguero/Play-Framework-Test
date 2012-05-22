@@ -13,4 +13,8 @@ import com.google.code.morphia.annotations.Id;
 public class Country extends Model {
 	
 	public String name;
+	
+	public String toString() {
+		return name;
+	}
 }

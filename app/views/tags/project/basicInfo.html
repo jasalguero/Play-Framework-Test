@@ -6,7 +6,7 @@
 		&{'views.general.basicInfo'}
 	</legend>
 
-	<input type="text" name="project._id" value="${project.id}"/>
+	<input type="hidden" name="project._id" value="${project.id}"/>
 	<!-- PROJECT NAME -->
 	#{field 'project.name'}
 	<div class="control-group #{twErrorClass field.name/}">
@@ -50,6 +50,22 @@
 		</div>
 	</div>
 	#{/}
+	
+	
+	<!-- CATEGORIES -->
+	#{field 'project.categories'}
+	<div class="control-group">
+		<label class="control-label" for="country">&{'views.project.category'}</label>
+		<div class="controls">
+			<select id="project_categories" name="project.categories._id" value="" size="1" id="select" multiple>
+				#{list _allCategories, as:'category'}
+				<option value="${category.id}" ${project.categories.contains(category) ? 'selected' : ''} >${category.name}</option>
+				#{/list}
+			</select>
+		</div>
+	</div>
+	#{/}
+
 
 	<!-- NON Profit -->
 	#{field 'project.nonProfit'}
