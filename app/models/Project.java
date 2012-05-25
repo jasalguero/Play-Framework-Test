@@ -4,6 +4,7 @@ import play.*;
 import play.data.validation.Required;
 import play.modules.morphia.Blob;
 import play.modules.morphia.Model;
+import utils.Constants.UserType;
 
 import java.io.File;
 import java.util.*;
@@ -36,5 +37,25 @@ public class Project extends Model {
 	
 	@Reference
 	public List<Category> categories;
+	
+	@Reference
+	public City city;
+	
+	/**
+	 * Returns all the possible cities based
+	 * on the owner's Country
+	 * @return List of cities, or empty if owner is not initialized
+	 */
+	public List<City> getPossibleCities(){
+		List<City> result = new ArrayList<City>();
+		if (owner != null && owner.country != null){
+			if (owner.userType == UserType.ADMIN.getId()){
+				result = City.find().order("name").asList();
+			}else{
+				result = City.find("Country", owner.country).order("name").asList();
+			}
+		}	
+		return result;
+	}
 	
 }

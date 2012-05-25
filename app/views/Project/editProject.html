@@ -1,5 +1,13 @@
 #{extends 'main.html' /}
 #{set title:'Edit Project' /}
+#{set 'moreStyles'}
+	#{stylesheet 'leaflet.css' /}
+	<!--[if lte IE 8]>
+		<link rel="stylesheet" href="/public/stylesheets/leaflet.ie.css" />
+	<![endif]-->
+#{/set}
+
+
 
 <div class="container">
 
@@ -22,7 +30,7 @@
 	#{/if}
 
 	<div class="row">
-		<div class="span9">
+		<div class="span11">
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active">
@@ -37,15 +45,13 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="lA">
-						#{project/basicInfo project:project, allCategories:allCategories /}
+						#{project/basicInfo project:project, categories:categories, cities:cities /}
 					</div>
 					<div class="tab-pane" id="lB">
 						#{project/images project:project, images:images /}
 					</div>
 					<div class="tab-pane" id="lC">
-						<p>
-							What up girl, this is Section C.
-						</p>
+						#{project/location /}
 					</div>
 				</div>
 			</div>

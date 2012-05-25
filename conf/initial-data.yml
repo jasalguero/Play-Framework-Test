@@ -1,17 +1,26 @@
  Country(global):
-   name : GLOBAL
+   name : static.data.global
  
  Country(germany):
-   name : GERMANY
+   name : static.data.germany
    
  Country(portugal):
-   name : PORTUGAL
+   name : static.data.portugal
    
  User(admin):
     email : admin@senseship.com
     password : 123
     username : admin
-    country: global 
+    country: global
+    userType: 0
+    
+ City(berlin):
+    name : Berlin
+    country : germany
+    
+ City(munich):
+    name : Munich
+    country : germany   
     
  Category(1):
     name : Urban Exploring
@@ -51,3 +60,11 @@
 
  Category(13):
     name : On Wheels
+    
+ Project(testProject):
+    description : Test description
+    headline : Test headline
+    name : My first project!
+    nonProfit : true
+    goal : Test goal
+    owner : admin

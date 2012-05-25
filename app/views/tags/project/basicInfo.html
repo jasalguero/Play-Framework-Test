@@ -34,7 +34,7 @@
 	<div class="control-group #{twErrorClass field.name/}">
 		<label class="control-label" for="&{field.name}" >&{'views.project.description'}</label>
 		<div class="controls">
-			<textarea class="input-xxlarge" id="description" name="${field.name}" rows="10" placeholder="&{'views.project.description.info'}">${field.value}</textarea>
+			<textarea class="input-xxlarge" id="${field.name}" name="${field.name}" rows="10" placeholder="&{'views.project.description.info'}">${field.value}</textarea>
 			<span class="help-inline">#{error field.name /}</span>
 		</div>
 	</div>
@@ -45,7 +45,23 @@
 	<div class="control-group #{twErrorClass field.name/}">
 		<label class="control-label" for="&{field.name}" >&{'views.project.goal'}</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge" id="goal" name="${field.name}" value="${field.value}" placeholder="&{'views.project.goal.info'}"/>
+			<input type="text" class="input-xlarge" id="${field.name}" name="${field.name}" value="${field.value}" placeholder="&{'views.project.goal.info'}"/>
+			<span class="help-inline">#{error field.name /}</span>
+		</div>
+	</div>
+	#{/}
+	
+	<!-- GOAL -->
+	#{field 'project.city'}
+	<div class="control-group #{twErrorClass field.name/}">
+		<label class="control-label" for="&{field.name}" >&{'views.project.city'}</label>
+		<div class="controls">
+			#{select 'project.city._id', items:_cities, valueProperty:'id', labelProperty:'name', id:'city', value:project.city._id, size:0 /}
+			<!-- <select id="${field.name}" name="project.city.id" value="" size="1" id="select">
+				#{list _cities, as:'city'}
+				<option value="city" ${project.city.equals(city) ? 'selected' : ''} >${city.name}</option>
+				#{/list}
+			</select> -->
 			<span class="help-inline">#{error field.name /}</span>
 		</div>
 	</div>
@@ -55,10 +71,10 @@
 	<!-- CATEGORIES -->
 	#{field 'project.categories'}
 	<div class="control-group">
-		<label class="control-label" for="country">&{'views.project.category'}</label>
+		<label class="control-label" for="&{field.name}">&{'views.project.category'}</label>
 		<div class="controls">
-			<select id="project_categories" name="project.categories._id" value="" size="1" id="select" multiple>
-				#{list _allCategories, as:'category'}
+			<select id="${field.name}" name="project.categories._id" value="" size="1" id="select" multiple>
+				#{list _categories, as:'category'}
 				<option value="${category.id}" ${project.categories.contains(category) ? 'selected' : ''} >${category.name}</option>
 				#{/list}
 			</select>

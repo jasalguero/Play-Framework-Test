@@ -1,14 +1,17 @@
 package models;
 
-import org.junit.*;
-
 import java.io.File;
-import java.util.*;
+import java.util.List;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import play.Logger;
 import play.modules.morphia.Blob;
-import play.test.*;
-import models.*;
+import play.test.MorphiaFixtures;
+import play.test.UnitTest;
+import utils.Constants;
 
 public class ModelBasicTests extends UnitTest {
 	
@@ -17,6 +20,12 @@ public class ModelBasicTests extends UnitTest {
 		Logger.info("Deleting all models");
 		MorphiaFixtures.deleteAllModels();
 		MorphiaFixtures.loadModels("data/countries.yml");
+	}
+	
+	@AfterClass
+	public static void destroyData(){
+		Logger.info("Deleting all models");
+		MorphiaFixtures.deleteAllModels();
 	}
 
 	@Test
@@ -44,7 +53,8 @@ public class ModelBasicTests extends UnitTest {
 		List<User> beforeList = User.findAll();
 		
 		// Create a new user and save it
-		new User("test@senseship.com", "1234", "firstUserTest", global).save();
+		new User("test@senseship.com", "1234", "firstUserTest", global, Constants.UserType.ADMIN.getId()).save();
+	
 
 		// Retrieve the user with e-mail address test@senseship.com
 		User admin = User.find("byEmail", "test@senseship.com").first();
@@ -54,8 +64,8 @@ public class ModelBasicTests extends UnitTest {
 		assertEquals("firstUserTest", admin.username);
 		assertTrue(beforeList.size() < User.findAll().size());
 		
-		admin.delete();
-		assertTrue(beforeList.size() == User.findAll().size());	
+		//admin.delete();
+		//assertTrue(beforeList.size() == User.findAll().size());	
 	}
 	
 	@Test

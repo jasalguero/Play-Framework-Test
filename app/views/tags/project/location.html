@@ -1,0 +1,27 @@
+<fieldset>
+	<legend>
+		&{'views.general.location'}
+	</legend>
+	
+	<div id="mapSelector" style="height: 300px; width:600px"></div>
+	
+</fieldset>
+
+#{set 'moreScripts'}
+
+#{script 'leaflet.js' /}
+<script type="text/javascript" charset="utf-8">
+	var map = new L.Map('mapSelector');
+	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/eda2316b769c4e17a1b900d6b59943ee/997/256/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    maxZoom: 18
+});    
+
+    var london = new L.LatLng(51.505, -0.09); // geographical point (longitude and latitude)
+	map.setView(london, 13).addLayer(cloudmade);
+
+</script>
+
+
+	
+#{/set}

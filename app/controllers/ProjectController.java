@@ -3,14 +3,12 @@ package controllers;
 import java.io.File;
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
 import models.Category;
+import models.City;
 import models.Image;
 import models.Project;
 import models.User;
 import play.Logger;
-import play.data.validation.Valid;
 import play.modules.morphia.Blob;
 import play.mvc.Controller;
 
@@ -61,6 +59,10 @@ public class ProjectController extends Controller {
 		editProject(project);
 	}
 
+	/**
+	 * Retrieves the data needed to display the edit form
+	 * @param project
+	 */
 	private static void editProject(Project project) {
 		Logger.info("Retrieving images for project %s", project.getId()
 				.toString());
@@ -68,10 +70,14 @@ public class ProjectController extends Controller {
 		Logger.info("%d images retrieved", images.size());
 
 		Logger.info("Retrieving all categories...");
-		List<Category> allCategories = Category.findAll();
-		Logger.info("%d categories retrieved", allCategories.size());
-
-		render("Project/editProject.html", project, images, allCategories);
+		List<Category> categories = Category.findAll();
+		Logger.info("%d categories retrieved", categories.size());
+		
+		Logger.info("Retrieving possible cities...");
+		List<City> cities = project.getPossibleCities();
+		Logger.info("%d cities retrievied", cities.size());
+				
+		render("Project/editProject.html", project, images, categories, cities);
 	}
 
 	/**

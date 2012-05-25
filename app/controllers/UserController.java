@@ -3,8 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Country;
-import models.User;
-import play.mvc.*;
+import play.mvc.Controller;
 
 public class UserController extends Controller {
 
