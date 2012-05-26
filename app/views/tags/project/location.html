@@ -1,10 +1,12 @@
 <fieldset>
 	<legend>
-		&{'views.general.location'}
+		&{'views.project.location'}
 	</legend>
 	
+		<label>&{'views.project.select.location'}</label>
+
 	<div id="mapSelector" style="height: 300px; width:600px"></div>
-	
+
 </fieldset>
 
 #{set 'moreScripts'}
@@ -12,16 +14,27 @@
 #{script 'leaflet.js' /}
 <script type="text/javascript" charset="utf-8">
 	var map = new L.Map('mapSelector');
-	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/eda2316b769c4e17a1b900d6b59943ee/997/256/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-    maxZoom: 18
-});    
+	var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>', cloudmade = new L.TileLayer(cloudmadeUrl, {
+		maxZoom : 18,
+		attribution : cloudmadeAttribution
+	});
 
-    var london = new L.LatLng(51.505, -0.09); // geographical point (longitude and latitude)
+	var london = new L.LatLng(51.505, -0.09);
+	// geographical point (longitude and latitude)
 	map.setView(london, 13).addLayer(cloudmade);
 
+	map.on('click', onMapClick);
+
+	var popup = new L.Popup();
+
+	function onMapClick(e) {
+		var latlngStr = '(' + e.latlng.lat.toFixed(3) + ', ' + e.latlng.lng.toFixed(3) + ')';
+
+		popup.setLatLng(e.latlng);
+		popup.setContent("You clicked the map at " + latlngStr);
+
+		map.openPopup(popup);
+	}
 </script>
 
-
-	
 #{/set}
