@@ -34,23 +34,23 @@
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#lA" data-toggle="tab">&{'views.project.new.menu.basicInfo'}</a>
+						<a href="#tabBasic" data-toggle="tab">&{'views.project.new.menu.basicInfo'}</a>
 					</li>
 					<li class="">
-						<a href="#lB" data-toggle="tab">&{'views.project.new.menu.images'}</a>
+						<a href="#tabImages" data-toggle="tab">&{'views.project.new.menu.images'}</a>
 					</li>
 					<li class="">
-						<a href="#lC" data-toggle="tab">&{'views.project.new.menu.location'}</a>
+						<a href="#tabLocation" data-toggle="tab" id="link3">&{'views.project.new.menu.location'}</a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active" id="lA">
+					<div class="tab-pane active" id="tabBasic">
 						#{project/basicInfo project:project, categories:categories, cities:cities /}
 					</div>
-					<div class="tab-pane" id="lB">
+					<div class="tab-pane" id="tabImages">
 						#{project/images project:project, images:images /}
 					</div>
-					<div class="tab-pane" id="lC">
+					<div class="tab-pane" id="tabLocation">
 						#{project/location /}
 					</div>
 				</div>
