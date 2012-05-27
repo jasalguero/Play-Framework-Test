@@ -2,7 +2,8 @@
 /*				GLOBAL VARIABLES							  */
 /**************************************************************/
 
-var mapMarker;
+var projectMapMarker;
+var projectMap;
 
 /**************************************************************/
 /*				MAP FUNCTIONS								  */
@@ -40,8 +41,8 @@ function onMapClick(e) {
 	}
 
 	//Remove marker if there is already one created
-	if(mapMarker != null) {
-		this.removeLayer(mapMarker);
+	if(projectMapMarker != null) {
+		this.removeLayer(projectMapMarker);
 	}
 
 	//Create marker
@@ -51,7 +52,7 @@ function onMapClick(e) {
 	this.addLayer(marker);
 
 	//Set the marker in the global variable
-	mapMarker = marker
+	projectMapMarker = marker
 
 	//Update the result div
 	searchForAddres(e.latlng.lat, e.latlng.lng);
@@ -89,20 +90,34 @@ function fixMapInMenu(map, elementLauncher) {
 	});
 }
 
-function searchForAddres(latitude, longitude){
+function searchForAddres(latitude, longitude) {
 	var url = "http://nominatim.openstreetmap.org/reverse?format=json";
-	url = url+"?lat="+latitude;
-	url = url+"?lon="+longitude;
-	
-	$.ajax({
-  		url: url,
-  		beforeSend: function(data){alert("url: " + url)}
-  		})
-		.done(function(data) { alert("success! Response: " + data); })
-		.fail(function() { alert("error"); })
+	url = url + "&lat=" + latitude;
+	url = url + "&lon=" + longitude;
+
+
+	$.getJSON(url, {}, function(data){
+		printMapResult(data)
+	})
 }
 
-function printMapResult(latitude, longitude){
-	$("#mapResultAddress").html(latitude + " , " + longitude);
+function printMapResult(response) {
+	$("#mapResultAddress").html(response.display_name);
+}
+
+function searchAddress(){
+	var url = " http://nominatim.openstreetmap.org/search?format=json";
+	
+	var address = $("#userAddress").val();
+	var addressParts = address.split(" ");
+
+	_.each(addressParts,function(param){
+		url = url+"&"+param;
+	})
+	
+	
+	$.getJSON(url, {}, function(data){
+		printMapResult(data)
+	})
 }
 

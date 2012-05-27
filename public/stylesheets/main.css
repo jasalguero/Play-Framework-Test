@@ -85,3 +85,7 @@ body {
 	border-style: solid;
 	margin-bottom: 15px;
 }
+
+#mapResultTitle {
+	font-weight: bold;
+}

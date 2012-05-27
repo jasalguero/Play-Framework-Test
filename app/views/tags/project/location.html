@@ -3,14 +3,19 @@
 		&{'views.project.location'}
 	</legend>
 	
-	<label>&{'views.project.select.location'}</label>
+	<p>&{'views.project.location.select'}</>
+	
+	<fieldset>
+		<input type="text" class="input-xlarge" id="userAddress" name="address.input" value="" placeholder="&{'views.project.location.input.info'}"/>
+		<button class="btn btn-primary" onclick="searchAddress()">&{'views.project.location.search'}</button>
+	</fieldset>
 
 	<div class="row">
 		<div id="mapSelector" class="span9" style="height: 300px;"></div>
 	</div>
 	<div class="row">
 		<div class="alert alert-info span8" id="mapResult">
-			&{'views.project.location.selected'}
+			<span id="mapResultTitle" >&{'views.project.location.selected'}</span>
 	  		<p><span id="mapResultAddress"></span></p>
 		</div>
 	</div>
