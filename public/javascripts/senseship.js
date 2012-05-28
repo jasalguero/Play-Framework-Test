@@ -2,6 +2,10 @@
 /*				GLOBAL VARIABLES							  */
 /**************************************************************/
 
+var OSM_ADDRESS_SEARCH_URL = "http://nominatim.openstreetmap.org/search?q=";
+var OSM_GEOCODE_SEARCH_URL = "http://nominatim.openstreetmap.org/reverse?format=json";
+var OSM_FINAL_PARAMS = "&format=json&limit=1&email=admin@senseship.org";
+
 var projectMapMarker;
 var projectMap;
 
@@ -14,58 +18,13 @@ var projectMap;
  * @param latitude
  * @param longitude
  */
-function createMap(latitude, longitude, zoom) {
-
-	var map = new L.Map('mapSelector');
-	var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>', cloudmade = new L.TileLayer(cloudmadeUrl, {
-		attribution : cloudmadeAttribution,
-		maxZoom : 18
-	});
-
-	var center = new L.LatLng(latitude, longitude);
-	// geographical point (longitude and latitude)
-	map.setView(center, zoom).addLayer(cloudmade);
-
-	return map;
-}
-
-/**
- * Event for the action of clicking on a map
- */
-function onMapClick(e) {
-
-	//Define options for the marker
-	var options = {
-		'clickable' : true,
-		'draggable' : true
-	}
-
-	//Remove marker if there is already one created
-	if(projectMapMarker != null) {
-		this.removeLayer(projectMapMarker);
-	}
-
-	//Create marker
-	var marker = new L.Marker(e.latlng, options);
-
-	//Add it to the map
-	this.addLayer(marker);
-
-	//Set the marker in the global variable
-	projectMapMarker = marker
-
-	//Update the result div
-	searchForAddres(e.latlng.lat, e.latlng.lng);
-}
-
-/**
- * Fixes problem with maps being drawn in hidden divs
- * @param {Object} options {String latitude, String longitude}
- */
-function createMapforEditProject(options) {
+//TODO change params to options
+function createMap(options) {
+	//Set default options
 	defaultOptions = {
-		'longitude' : 'foo-default',
-		'latitude' : 'bar-default',
+		'latitude' : '52.5015955',
+		'longitude' : '13.4023271',
+		'container' : 'mapContainer',
 		'zoom' : 13
 	}
 
@@ -74,9 +33,57 @@ function createMapforEditProject(options) {
 	} else {
 		options = defaultOptions;
 	}
-	var map = createMap(options.latitude, options.longitude, options.zoom);
 
-	return map;
+	projectMap = new L.Map(options.container);
+	var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>', cloudmade = new L.TileLayer(cloudmadeUrl, {
+		attribution : cloudmadeAttribution,
+		maxZoom : 18
+	});
+
+	var center = new L.LatLng(options.latitude, options.longitude);
+	// geographical point (longitude and latitude)
+	projectMap.setView(center, options.zoom).addLayer(cloudmade);
+}
+
+/**
+ * Event for the action of clicking on a map
+ */
+function onMapClick(e) {
+
+	createMarker(e.latlng.lat, e.latlng.lng, options);
+
+	//Update the result div
+	searchForAddres(e.latlng.lat, e.latlng.lng);
+}
+
+function createMarker(latitude, longitude, options) {
+	//Define options for the marker
+	var defaultOptions = {
+		'clickable' : true,
+		'draggable' : true,
+		'zoom' : 14
+	}
+
+	if( typeof options == 'object') {
+		options = $.extend(defaultOptions, options);
+	} else {
+		options = defaultOptions;
+	}
+
+	//Remove marker if there is already one created
+	if(projectMapMarker != null) {
+		projectMap.removeLayer(projectMapMarker);
+	}
+
+	var latlng = new L.LatLng(latitude, longitude)
+
+	//Create marker
+	projectMapMarker = new L.Marker(latlng, options);
+
+	//Add it to the map
+	projectMap.addLayer(projectMapMarker);
+
+	projectMap.setView(latlng, options.zoom);
 }
 
 /**
@@ -91,33 +98,34 @@ function fixMapInMenu(map, elementLauncher) {
 }
 
 function searchForAddres(latitude, longitude) {
-	var url = "http://nominatim.openstreetmap.org/reverse?format=json";
+	var url = OSM_GEOCODE_SEARCH_URL;
 	url = url + "&lat=" + latitude;
 	url = url + "&lon=" + longitude;
+	url = url + OSM_FINAL_PARAMS;
 
-
-	$.getJSON(url, {}, function(data){
+	$.getJSON(url, {}, function(data) {
 		printMapResult(data)
 	})
 }
 
 function printMapResult(response) {
+	console.log(response);
 	$("#mapResultAddress").html(response.display_name);
 }
 
-function searchAddress(){
-	var url = " http://nominatim.openstreetmap.org/search?format=json";
-	
-	var address = $("#userAddress").val();
-	var addressParts = address.split(" ");
+function searchAddress() {
+	var url = OSM_ADDRESS_SEARCH_URL;
 
-	_.each(addressParts,function(param){
-		url = url+"&"+param;
-	})
-	
-	
-	$.getJSON(url, {}, function(data){
-		printMapResult(data)
+	var address = $("#userAddress").val();
+
+	url = url + address + OSM_FINAL_PARAMS;
+	url = encodeURI(url);
+
+	console.log("url -> " + url);
+
+	$.getJSON(url, {}, function(data) {
+		createMarker(data[0].lat, data[0].lon);
+		printMapResult(data[0]);
 	})
 }
 

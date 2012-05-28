@@ -29,8 +29,10 @@ public class Bootstrap extends Job {
     private void fixProjects() {
     	Project project = Project.find("name", "My first project!").get();
     	User user = User.find("username","admin").get();
+    	City city = City.find("name", "Berlin").get();
     	
     	project.owner = user;
+    	project.city = city;
     	project.save();
 	}
 

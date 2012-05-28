@@ -2,23 +2,28 @@
 	<legend>
 		&{'views.project.location'}
 	</legend>
-	
-	<p>&{'views.project.location.select'}</>
-	
-	<fieldset>
-		<input type="text" class="input-xlarge" id="userAddress" name="address.input" value="" placeholder="&{'views.project.location.input.info'}"/>
-		<button class="btn btn-primary" onclick="searchAddress()">&{'views.project.location.search'}</button>
-	</fieldset>
 
-	<div class="row">
-		<div id="mapSelector" class="span9" style="height: 300px;"></div>
-	</div>
-	<div class="row">
-		<div class="alert alert-info span8" id="mapResult">
-			<span id="mapResultTitle" >&{'views.project.location.selected'}</span>
-	  		<p><span id="mapResultAddress"></span></p>
+	<p>
+		&{'views.project.location.select'}</>
+
+		<div class="row span 8">
+			<input type="text" class="input-xxlarge" id="userAddress" name="address.input" value="" placeholder="&{'views.project.location.input.info'}"/>
+			<button class="btn btn-primary" onclick="searchAddress()">
+				&{'views.project.location.search'}
+			</button>
 		</div>
-	</div>
+
+		<div class="row">
+			<div id="mapContainer" class="span9 mapContainer" style="height: 300px;"></div>
+		</div>
+		<div class="row">
+			<div class="alert alert-info span8" id="mapResult">
+				<span id="mapResultTitle" >&{'views.project.location.selected'}</span>
+				<p>
+					<span id="mapResultAddress"></span>
+				</p>
+			</div>
+		</div>
 
 </fieldset>
 
@@ -28,15 +33,15 @@
 #{script 'senseship.js'/}
 
 <script type="text/javascript" charset="utf-8">
-var options = {
-	'latitude' : '52.5015955',
-	'longitude' : '13.4023271',
-	'zoom' : 13	
-}
-var map = createMapforEditProject(options);
-map.on('click', onMapClick);
-fixMapInMenu(map, "#link3");
-
+	var options = {
+		'latitude' : '52.5015955',
+		'longitude' : '13.4023271',
+		'container' : "mapContainer",
+		'zoom' : 13
+	}
+	createMap(options);
+	projectMap.on('click', onMapClick);
+	fixMapInMenu(projectMap, "#link3"); 
 </script>
 
 #{/set}

@@ -79,7 +79,7 @@ body {
 /*==========================================*/
 /*			Project							*/
 /*==========================================*/
-#mapSelector {
+.mapContainer {
 	border-radius: 1px;
 	border-width: 1px;
 	border-style: solid;
