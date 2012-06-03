@@ -5,6 +5,7 @@
 var OSM_ADDRESS_SEARCH_URL = "http://nominatim.openstreetmap.org/search?q=";
 var OSM_GEOCODE_SEARCH_URL = "http://nominatim.openstreetmap.org/reverse?format=json";
 var OSM_FINAL_PARAMS = "&format=json&limit=1&email=admin@senseship.org";
+var OSM_DEFAULT_ZOOM = 14;
 
 var projectMapMarker;
 var projectMap;
@@ -18,14 +19,13 @@ var projectMap;
  * @param latitude
  * @param longitude
  */
-//TODO change params to options
 function createMap(options) {
 	//Set default options
 	defaultOptions = {
 		'latitude' : '52.5015955',
 		'longitude' : '13.4023271',
 		'container' : 'mapContainer',
-		'zoom' : 13
+		'zoom' : OSM_DEFAULT_ZOOM
 	}
 
 	if( typeof options == 'object') {
@@ -61,7 +61,7 @@ function createMarker(latitude, longitude, options) {
 	var defaultOptions = {
 		'clickable' : true,
 		'draggable' : true,
-		'zoom' : 14
+		'zoom' : OSM_DEFAULT_ZOOM
 	}
 
 	if( typeof options == 'object') {
@@ -76,14 +76,17 @@ function createMarker(latitude, longitude, options) {
 	}
 
 	var latlng = new L.LatLng(latitude, longitude)
-
+	
 	//Create marker
 	projectMapMarker = new L.Marker(latlng, options);
 
+	//Adds the update event for the marker dragging
+	projectMapMarker.on('dragend', function(e){
+		searchForAddres(e.target._latlng.lat, e.target._latlng.lng);
+	});
+
 	//Add it to the map
 	projectMap.addLayer(projectMapMarker);
-
-	projectMap.setView(latlng, options.zoom);
 }
 
 /**
@@ -113,6 +116,13 @@ function printMapResult(response) {
 	$("#mapResultAddress").html(response.display_name);
 }
 
+function processReverseGeoSearch(data) {
+	createMarker(data[0].lat, data[0].lon);
+	printMapResult(data[0]);
+	var latlng = new L.LatLng(data[0].lat, data[0].lon)
+	projectMap.setView(latlng, OSM_DEFAULT_ZOOM);
+}
+
 function searchAddress() {
 	var url = OSM_ADDRESS_SEARCH_URL;
 
@@ -124,8 +134,7 @@ function searchAddress() {
 	console.log("url -> " + url);
 
 	$.getJSON(url, {}, function(data) {
-		createMarker(data[0].lat, data[0].lon);
-		printMapResult(data[0]);
+		processReverseGeoSearch(data);
 	})
 }
 

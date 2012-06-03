@@ -5,6 +5,7 @@ menu.projects.list=List of Projects
 menu.projects.new=Create Project
 menu.projects=Projects
 menu.user.register=Register
+menu.homepage=Homepage
 menu.users=Users
 views.general.basicInfo=Basic Information
 views.project.create=Create Project, now\!

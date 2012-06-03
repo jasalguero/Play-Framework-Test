@@ -1,6 +1,8 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+<div class="container">
+<div class="row">
 #{if user}
     <div class="user">
     	<span>Name: </span><span>${user.username}</span>
@@ -14,3 +16,5 @@
         There is currently nothing to read here.
     </div>
 #{/else}
+</div>
+</div>

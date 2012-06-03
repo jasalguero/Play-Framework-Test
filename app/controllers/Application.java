@@ -1,14 +1,11 @@
 package controllers;
 
-import play.*;
+import java.util.List;
+
+import models.Image;
+import play.Logger;
 import play.i18n.Lang;
-import play.mvc.*;
-import play.mvc.Http.Header;
-
-import java.net.URL;
-import java.util.*;
-
-import models.*;
+import play.mvc.Controller;
 
 public class Application extends Controller {
 
@@ -42,4 +39,8 @@ public class Application extends Controller {
 		renderBinary(image.image.get());
 	}
 
+	public static void homepage(){
+		render("homepage.html");
+	}
+	
 }

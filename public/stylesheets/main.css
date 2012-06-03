@@ -1,4 +1,7 @@
-/******* FONT DEFINITION ********/
+/***********************************************/
+/**********  	FONT DEFINITION 		********/
+/***********************************************/
+
 @font-face {
 	font-family: 'SansationRegular';
 	src: url('/public/fonts/sansation/Sansation_Regular-webfont.eot');
@@ -47,6 +50,10 @@
 	font-style: normal;
 }
 
+/***********************************************/
+/**********  	GENERAL			 		********/
+/***********************************************/
+
 /* HACK FOR COMBO HEIGHT */
 .test {
 	height: 27px !important;
@@ -60,8 +67,15 @@
 
 /* Customization */
 body {
-	background-image: url(/public/images/noise.gif);
+	padding-top: 30px;
+	font-family: Helvetica-neue;
 	font-family: 'SansationRegular', Fallback, Helvetica;
+}
+
+.bgWrapper {
+	padding-top: 60px;
+	padding-bottom: 40px;
+	/*background-image: url(/public/images/noise.gif);*/
 }
 
 h1 {
@@ -69,17 +83,80 @@ h1 {
 }
 
 body {
-	padding-top: 60px;
-	padding-bottom: 40px;
+	
 }
 .sidebar-nav {
 	padding: 9px 0;
 }
 
+a{
+	font-family: 'SansationBold', Fallback, Helvetica; 
+	color: #329553;
+}
+
+a:hover{
+	text-decoration: none;
+	color: #1F5C33;
+}
+
+
+.header{
+	margin-bottom:10px;
+}
+
+.footer{
+	margin: 20px;
+}
+
+/*==========================================*/
+/*			Home Page						*/
+/*==========================================*/
+
+#updateList{
+	font-size:9px;
+	height:150px;
+	overflow: auto;
+	margin: 10px;
+
+}
+
+.updateDate{
+	font-family: 'SansationBold', Fallback, Helvetica;
+}
+
+.eventPreview captions{
+	margin-left:8px;
+	margin-right:8px;
+}
+
+.eventPreview p{
+	font-size:11px;
+	color: gray;
+}
+
+.eventPreview .eventPTitle{
+	font-weight:bold;
+	font-size:12px;
+}
+
+#eventSearch div{
+	margin-bottom:5px;
+	margin-top:5px;
+}
+
+#eventSearch h4{
+	margin:5px;
+}
+
+#rndSearchButton{
+	margin-top:20px;
+	height: 60px;
+}
+
 /*==========================================*/
 /*			Project							*/
 /*==========================================*/
-.mapContainer {
+#mapContainer {
 	border-radius: 1px;
 	border-width: 1px;
 	border-style: solid;
@@ -89,3 +166,4 @@ body {
 #mapResultTitle {
 	font-weight: bold;
 }
+

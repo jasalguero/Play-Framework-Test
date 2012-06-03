@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                                       UserController.showForm
+GET		/homepage								Application.homepage
 
 # Users
 GET     /register								UserController.showForm

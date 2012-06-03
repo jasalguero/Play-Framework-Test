@@ -26,12 +26,18 @@ public class ProjectController extends Controller {
 		// TODO Get the real user when authentication is enabled
 		Logger.info("Retrieving project owner %s", "admin");
 		User user = User.find("byUsername", "admin").first();
+		
+		// TODO Fix until better solution for initial null values in select
+		City city = City.get();
 
 		if (user != null) {
 			Logger.info("User %s retrieved successfully", user.getId());
 
 			// Assign owner
 			project.owner = user;
+			
+			// Assign city
+			project.city = city;
 
 			project.save();
 			Logger.info("New project created with id %s", project.getId());

@@ -4,17 +4,19 @@
 	<head>
 		<title>#{get 'title' /}</title>
 		<meta charset="${_response_encoding}">
+		
+		<!-- CSS -->
 		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.css'}">
-		#{get 'moreStyles' /}
 		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+		#{get 'moreStyles' /}
+
 		<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
 	</head>
-	<body >
-		#{menu /}
-		<div class="bgWrapper">
-			#{doLayout /}
-		</div>
+	<body>
+		#{doLayout /}
 	</body>
+	
+	<!-- JAVASCRIPT -->
 	<script src="@{'/public/javascripts/jquery-1.7.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 	<script src="http://malsup.github.com/jquery.form.js"></script>
 	<script src="@{'/public/javascripts/bootstrap.js'}" type="text/javascript" charset="${_response_encoding}"></script>
