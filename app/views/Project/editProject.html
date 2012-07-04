@@ -63,14 +63,16 @@
     #{script 'fileuploader.js'/}
     #{script 'leaflet.js' /}
     #{script 'ajaxupload.js' /}
-    #{script 'senseship.js' /}
+    #{script 'map.js' /}
     <script type="text/javascript">
     $(document).ready(function(){
+    	//Init openstreet map
+    	initMap();
+    
     	//Init image uploader form
     	initImageUpload()
     
-    	//Init openstreet map
-    	initMap();
+    	
     });
     </script>
 #{/set}
