@@ -29,3 +29,4 @@ views.project.location=Location
 views.project.location.select=Enter the address in the field below or place a marker in the map, once the display shows the correct address press Submit
 views.project.location.input.info=format -> street street nº, city, country
 views.project.location.search=Search
+views.project.image.upload=Upload Image

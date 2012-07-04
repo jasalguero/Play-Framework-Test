@@ -83,28 +83,27 @@ h1 {
 }
 
 body {
-	
+
 }
 .sidebar-nav {
 	padding: 9px 0;
 }
 
-a{
-	font-family: 'SansationBold', Fallback, Helvetica; 
+a {
+	font-family: 'SansationBold', Fallback, Helvetica;
 	color: #329553;
 }
 
-a:hover{
+a:hover {
 	text-decoration: none;
 	color: #1F5C33;
 }
 
-
-.header{
-	margin-bottom:10px;
+.header {
+	margin-bottom: 10px;
 }
 
-.footer{
+.footer {
 	margin: 20px;
 }
 
@@ -112,50 +111,66 @@ a:hover{
 /*			Home Page						*/
 /*==========================================*/
 
-#updateList{
-	font-size:9px;
-	height:150px;
+#updateList {
+	font-size: 9px;
+	height: 150px;
 	overflow: auto;
 	margin: 10px;
-
 }
 
-.updateDate{
+.updateDate {
 	font-family: 'SansationBold', Fallback, Helvetica;
 }
 
-.eventPreview captions{
-	margin-left:8px;
-	margin-right:8px;
+.eventPreview captions {
+	margin-left: 8px;
+	margin-right: 8px;
 }
 
-.eventPreview p{
-	font-size:11px;
+.eventPreview p {
+	font-size: 11px;
 	color: gray;
 }
 
-.eventPreview .eventPTitle{
-	font-weight:bold;
-	font-size:12px;
+.eventPreview .eventPTitle {
+	font-weight: bold;
+	font-size: 12px;
 }
 
-#eventSearch div{
-	margin-bottom:5px;
-	margin-top:5px;
+#eventSearch div {
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
-#eventSearch h4{
-	margin:5px;
+#eventSearch h4 {
+	margin: 5px;
 }
 
-#rndSearchButton{
-	margin-top:20px;
+#rndSearchButton {
+	margin-top: 20px;
 	height: 60px;
 }
 
 /*==========================================*/
 /*			Project							*/
 /*==========================================*/
+.imageUpload {
+	margin: 20px;
+}
+
+#imagePreview {
+	float: left;
+}
+
+div.preview.loading {
+	background: url('/public/images/loading.gif') no-repeat 39px 40px;
+}
+
+#uploadControlWrapper {
+	margin-left: 30px;
+	display: inline-block;
+}
+
 #mapContainer {
 	border-radius: 1px;
 	border-width: 1px;

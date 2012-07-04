@@ -102,7 +102,7 @@ public class ModelBasicTests extends UnitTest {
 		String textHeadline = "Test headline";
 		
 		//Create new image
-		Image image = new Image();
+		BlobImage image = new BlobImage();
 		image.description = textDesc;
 		image.headline = textHeadline;
 		image.isMain = true;
@@ -115,7 +115,7 @@ public class ModelBasicTests extends UnitTest {
 		image.image = new Blob(file,file.getName());
 		image.save();
 		
-		Image newImage = Image.find("byHeadline",textHeadline).first();
+		BlobImage newImage = BlobImage.find("byHeadline",textHeadline).first();
 		
 		//Test
 		assertNotNull(newImage);

@@ -27,12 +27,9 @@
 
 </fieldset>
 
-#{set 'moreScripts'}
-
-#{script 'leaflet.js' /}
-#{script 'senseship.js'/}
 
 <script type="text/javascript" charset="utf-8">
+function initMap(){
 	var options = {
 		'latitude' : '52.5015955',
 		'longitude' : '13.4023271',
@@ -42,6 +39,5 @@
 	createMap(options);
 	projectMap.on('click', onMapClick);
 	fixMapInMenu(projectMap, "#link3"); 
+}
 </script>
-
-#{/set}

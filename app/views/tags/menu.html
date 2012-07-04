@@ -27,6 +27,9 @@
 					<li class="dropdown">
 						<a href="/homepage">&{'menu.homepage'}</a>
 					</li>
+					<li class="dropdown">
+						<a href="/imageUploader">Upload</a>
+					</li>
 				</ul>
 				<ul class="nav pull-right">
 					<li class="dropdown">
@@ -36,11 +39,11 @@
 								#{a @Application.changeLang('en',request.url)}&{'menu.languages.english'}#{/a}
 							</li>
 							<li>
-							
+
 								#{a @Application.changeLang('es',request.url)}&{'menu.languages.spanish'}#{/a}
 							</li>
 							<li>
-							
+
 								#{a @Application.changeLang('de',request.url)}&{'menu.languages.german'}#{/a}
 							</li>
 						</ul>

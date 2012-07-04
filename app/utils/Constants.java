@@ -15,6 +15,13 @@ public class Constants {
 	public static final String COUNTRY_PORTUGAL = "static.data.portugal";
 	
 	
+	/* =========================================== */
+	/* 					IMAGE REPOSITORY		   */
+	/* =========================================== */
+	
+	public static final String IMAGE_REPO_PROJECT_DIR = "projects";
+	
+	
 	/**
 	 * Enum containing all the user types in the system
 	 */

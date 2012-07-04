@@ -1,59 +1,83 @@
-#{form @ProjectController.saveImage(_project._id), enctype:'multipart/form-data', id:"formImage"}
+<div class="page-header">
+	<h3>&{'views.general.images'}</h2>
+</div>
 
-<fieldset>
-	<legend>
-		&{'views.general.images'}
-	</legend>
+<!-- IMAGE UPLOAD-->
+<!--<input type="file" name="photo" class="file-input">
+<div class="form-actions">
+<button type="submit" class="btn btn-primary">
+&{'views.project.image.upload'}
+</button>
 
-	#{list _images, as:'image'}
+<div id="file-uploader">
+<noscript>
+<p>
+Please enable JavaScript to use file uploader.
+</p>
+<!-- or put a simple form for upload here
+</noscript>
 
-	<img src="@{Application.displayImage(image.id.toString())}">
+<script>
+function createUploader() {
+var uploader = new qq.FileUploader({
+element : document.getElementById('file-uploader'),
+action : '/upload',
+params : {
+projectId : '&{_project._id}'
+},
+debug : true
+});
+}
 
-	#{/}
+// in your app create uploader as soon as the DOM is ready
+// don't wait for the window to load
+window.onload = createUploader;
+</script>
+</div>
+</div>-->
 
-	<!-- IMAGE -->
-	<input type="file" name="photo" class="file-input">
-
-	<div class="form-actions">
-		<button type="submit" class="btn btn-primary">
-			&{'project.image.upload'}
-		</button>
+<!--<div class="row span9 imageUpload">
+	<div id="imagePreview">
+		<img id="thumb" src="http://placehold.it/120x120" alt="">
 	</div>
-</fieldset>
-#{/form}
+		
+	<div id="uploadControlWrapper" class="span2">
+		<!--#{form @ProjectController.saveImage(_project._id), enctype:'multipart/form-data', id:"formImage"} #{/form} -->
 
-<!--<script>
-	// wait for the DOM to be loaded
-	var options = {
-		success : processResponse
-	};
-	$(document).ready(function() {
-		// bind 'myForm' and provide a simple callback function
-		//$('#formImage').ajaxForm(options);
-		//$('#formImage').ajaxForm(function() {
-		/**$('#result').load(function() {
-		 $(this).unbind('load');
-		 this.src = '/script/dynamicimage';
-		 });*/
-		//});
+		<!--<form id="uploadImage" action="/upload">
+			<label>Upload a new picture</label>
+			<input type="file" id="imageUpload" size="20">
+			<button type="submit" class="button btn btn-primary btn-small">
+				Save
+			</button>
+		</form>
+	</div>
+</div>-->
+<br />
+
+#{list _images, as:'image'}
+
+<img src="${image.url}" >
+
+#{/}
+
+<script type="text/javascript" charset="utf-8">
+function initImageUpload(){
+	var thumb = $('img#thumb');	
+
+	new AjaxUpload('imageUpload', {
+		action: $('form#uploadImage').attr('action'),
+		name: 'image',
+		onSubmit: function(file, extension) {
+			$('div.preview').addClass('loading');
+		},
+		onComplete: function(file, response) {
+			thumb.load(function(){
+				$('div.preview').removeClass('loading');
+				thumb.unbind();
+			});
+			thumb.attr('src', response);
+		}
 	});
-
-	function showResponse(responseText, statusText, xhr, $form) {
-		// for normal html responses, the first argument to the success callback
-		// is the XMLHttpRequest object's responseText property
-
-		// if the ajaxForm method was passed an Options Object with the dataType
-		// property set to 'xml' then the first argument to the success callback
-		// is the XMLHttpRequest object's responseXML property
-
-		// if the ajaxForm method was passed an Options Object with the dataType
-		// property set to 'json' then the first argument to the success callback
-		// is the json data object returned by the server
-
-		alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + '\n\nThe output div should have already been updated with the responseText.');
-	}
-
-	function processResponse(responseText, statusText, xhr, $form) {
-		alert(responseText);
-	};
-</script>-->
+}
+</script>

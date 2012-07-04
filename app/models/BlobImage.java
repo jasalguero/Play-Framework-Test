@@ -10,9 +10,9 @@ import play.modules.morphia.Model;
 import utils.S;
 
 @Entity
-public class Image extends Model{
+public class BlobImage extends Model{
 	
-	public String url;	
+	public Blob image;	
 	public String headline;
 	public String description;
 	public Boolean isMain;
@@ -20,4 +20,10 @@ public class Image extends Model{
 	@Reference(ignoreMissing=true)
 	public Project project;
 	
+	public void setImage(File file) {
+        String type = "image/" + S.fileExtension(file.getName());
+        image = new Blob(file,type);
+        save();
+    }
+
 }

@@ -5,12 +5,14 @@ import java.util.List;
 
 import models.Category;
 import models.City;
+import models.BlobImage;
 import models.Image;
 import models.Project;
 import models.User;
 import play.Logger;
 import play.modules.morphia.Blob;
 import play.mvc.Controller;
+import utils.FTPHelper;
 
 public class ProjectController extends Controller {
 
@@ -105,7 +107,7 @@ public class ProjectController extends Controller {
 	 * 
 	 * @param photo
 	 */
-	public static void saveImage(String projectId, File photo) {
+	/*public static void saveImage(String projectId, File photo) {
 		Logger.info("Saving image");
 		notFoundIfNull(photo);
 
@@ -126,6 +128,35 @@ public class ProjectController extends Controller {
 			flash.success("project.image.upload.success");
 
 			editProject(project);
+		} else {
+			Logger.error("Project %s not found in the db!", projectId);
+			render("errors/500.html");
+		}
+	}*/
+	
+	public static void saveImage(String projectId, File photo){
+		Logger.info("Saving image");
+		notFoundIfNull(photo);
+
+		Logger.info("Retrieving project %s for the image", projectId);
+		Project project = Project.findById(projectId);
+
+		if (project != null) {
+			
+			String remoteUrl = FTPHelper.uploadImageToHost(photo, projectId);
+						
+			Logger.info("Project with id %s found", project.getId());
+
+			Image image = new Image();
+			image.project = project;
+			image.url = remoteUrl;
+
+			image.save();
+			Logger.info("Image uploaded successfully with url: %s", image.url);
+
+			flash.success("project.image.upload.success");
+
+			redirect("ProjectController.editProject", project.getId().toString());
 		} else {
 			Logger.error("Project %s not found in the db!", projectId);
 			render("errors/500.html");
