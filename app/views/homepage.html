@@ -9,7 +9,7 @@
 		<div class="span9" id="intro">
 			<div>
 				<p>
-					<h2>Find, join and make meaningful experiences to make a better world more likely</h2>
+					<h2>Find, join and make meaningful experiences to make a <span class="dynamo" data-center="true" data-lines="cleaner,healthier,friendlier">better</span> world more likely</h2>
 				</p>
 
 				<p>
@@ -181,10 +181,12 @@
 
 	#{set 'moreScripts'}
 	#{script 'senseship.js' /}
+	#{script 'dynamo.min.js' /}
 	<script type="text/javascript">
 		$(document).ready(function() {
 			//init layout functions
 			bindProjectEvent();
+			$('.dynamo').dynamo();
 		});
 	</script>
 	#{/set}
