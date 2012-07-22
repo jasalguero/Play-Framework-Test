@@ -51,8 +51,68 @@
 }
 
 /***********************************************/
+/**********  	NAV BAR			 		********/
+/***********************************************/
+
+.navbar-inner {
+	background-image: none;
+	background-color: white;
+	box-shadow: none;
+}
+
+.container {
+	margin-top: 100px;
+}
+
+.navbar .container {
+	margin-top: 0px;
+}
+
+.menuItem a {
+	display: block;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 100px;
+	font-size: 15px;
+	text-align: center;
+}
+
+.menuItem h4 > a:hover {
+	background-color: #329553;
+	color: white;
+	moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid :DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+.navbar .nav > li > a {
+	color: #329553;
+}
+
+.navbar .nav > li > a:hover {
+	text-decoration: none;
+	color: #1F5C33;
+}
+
+.navbar .caret {
+	border-top-color: #329553 !important;
+	border-bottom-color: #329553 !important;
+}
+
+/***********************************************/
 /**********  	GENERAL			 		********/
 /***********************************************/
+
+h2 {
+	font-size: 35px;
+	line-height: 40px;
+}
+
 
 /* HACK FOR COMBO HEIGHT */
 .test {
@@ -122,9 +182,9 @@ a:hover {
 	font-family: 'SansationBold', Fallback, Helvetica;
 }
 
-.eventPreviewContainer{
-	width:260px;
-	height:180px;
+.eventPreviewContainer {
+	width: 260px;
+	height: 180px;
 }
 
 .eventPreview captions {
@@ -157,24 +217,34 @@ a:hover {
 }
 
 .infoOverlay {
-	display:none;
+	display: none;
 	position: absolute;
 	color: #333;
-	width:260px;
-	height:180px;
-	
+	width: 260px;
+	height: 180px;
 	/*background-image: url("../images/bg-dark-85.png");*/
-	background-color:black;
+	background-color: black;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	Filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
 	opacity: 0.5;
 	color: white;
 }
 
-.infoOverlay .content{
-	padding:10px;
+.infoOverlay .content {
+	padding: 10px;
 }
 
-
-
+.infoOverlay a {
+	display: block;
+	background-color: white;
+	width: 100px;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: center;
+	opacity: 1;
+}
 
 /*==========================================*/
 /*			Project							*/
