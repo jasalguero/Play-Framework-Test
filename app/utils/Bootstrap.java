@@ -8,7 +8,8 @@ import play.Logger;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.test.MorphiaFixtures;
-import static utils.Constants.*;
+
+import static utils.Constants.COUNTRY_GERMANY;
 
 @OnApplicationStart
 public class Bootstrap extends Job {

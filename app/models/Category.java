@@ -1,7 +1,7 @@
 package models;
 
-import play.modules.morphia.Model;
 import com.google.code.morphia.annotations.Entity;
+import play.modules.morphia.Model;
 
 @Entity
 public class Category extends Model {

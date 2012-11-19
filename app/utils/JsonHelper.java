@@ -1,13 +1,12 @@
 package utils;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import play.Logger;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import play.Logger;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 public class JsonHelper {
 

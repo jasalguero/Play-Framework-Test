@@ -1,15 +1,14 @@
 package tags;
 
 import groovy.lang.Closure;
-
-import java.io.PrintWriter;
-import java.util.Map;
-
 import play.data.validation.Validation;
 import play.exceptions.TagInternalException;
 import play.exceptions.TemplateExecutionException;
 import play.templates.FastTags;
 import play.templates.GroovyTemplate.ExecutableTemplate;
+
+import java.io.PrintWriter;
+import java.util.Map;
 
 public class MyTags extends FastTags {
 

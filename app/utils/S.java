@@ -8,14 +8,14 @@ package utils;
  * @version 1.0 greenlaw110@gmail.com - initial version
  */
 
+import play.exceptions.UnexpectedException;
+import play.libs.Codec;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Random;
-
-import play.exceptions.UnexpectedException;
-import play.libs.Codec;
 
 public class S {
 
