@@ -1,18 +1,13 @@
 package controllers;
 
-import java.io.File;
-import java.util.List;
-
-import models.Category;
-import models.City;
-import models.BlobImage;
-import models.Image;
-import models.Project;
-import models.User;
+import com.sun.tools.internal.ws.processor.model.jaxb.RpcLitStructure;
+import models.*;
 import play.Logger;
-import play.modules.morphia.Blob;
 import play.mvc.Controller;
 import utils.FTPHelper;
+
+import java.io.File;
+import java.util.List;
 
 public class ProjectController extends Controller {
 
@@ -54,7 +49,7 @@ public class ProjectController extends Controller {
 	/**
 	 * Retrieve the projectId and display the edit project page
 	 * 
-	 * @param projectId
+	 * @param idProject
 	 */
 	public static void editProject(String idProject) {
 		Logger.info("Editing project %s", idProject);
@@ -74,8 +69,9 @@ public class ProjectController extends Controller {
 	private static void editProject(Project project) {
 		Logger.info("Retrieving images for project %s", project.getId()
 				.toString());
-		List<Image> images = Image.find("project", project).asList();
-		Logger.info("%d images retrieved", images.size());
+		//List<Image> images = Image.find("project", project).asList();
+
+		Logger.info("%d images retrieved", project.images.size());
 
 		Logger.info("Retrieving all categories...");
 		List<Category> categories = Category.findAll();
@@ -83,9 +79,9 @@ public class ProjectController extends Controller {
 		
 		Logger.info("Retrieving possible cities...");
 		List<City> cities = project.getPossibleCities();
-		Logger.info("%d cities retrievied", cities.size());
+		Logger.info("%d cities retrieved", cities.size());
 				
-		render("Project/editProject.html", project, images, categories, cities);
+		render("Project/editProject.html", project, categories, cities);
 	}
 
 	/**
@@ -102,66 +98,6 @@ public class ProjectController extends Controller {
 		redirect("ProjectController.editProject", project.getId().toString());
 	}
 
-	/**
-	 * Uploads an image to the db and associate it to the project
-	 * 
-	 * @param photo
-	 */
-	/*public static void saveImage(String projectId, File photo) {
-		Logger.info("Saving image");
-		notFoundIfNull(photo);
-
-		Logger.info("Retrieving project %s for the image", projectId);
-		Project project = Project.findById(projectId);
-
-		if (project != null) {
-			Logger.info("Project with id %s found", project.getId());
-
-			Image image = new Image();
-			image.project = project;
-
-			Logger.info("Image size %d", photo.length());
-			image.image = new Blob(photo, photo.getName());
-			image.save();
-			Logger.info("Image with id %s saved", image.image.length());
-
-			flash.success("project.image.upload.success");
-
-			editProject(project);
-		} else {
-			Logger.error("Project %s not found in the db!", projectId);
-			render("errors/500.html");
-		}
-	}*/
-	
-	public static void saveImage(String projectId, File photo){
-		Logger.info("Saving image");
-		notFoundIfNull(photo);
-
-		Logger.info("Retrieving project %s for the image", projectId);
-		Project project = Project.findById(projectId);
-
-		if (project != null) {
-			
-			String remoteUrl = FTPHelper.uploadImageToHost(photo, projectId);
-						
-			Logger.info("Project with id %s found", project.getId());
-
-			Image image = new Image();
-			image.project = project;
-			image.url = remoteUrl;
-
-			image.save();
-			Logger.info("Image uploaded successfully with url: %s", image.url);
-
-			flash.success("project.image.upload.success");
-
-			redirect("ProjectController.editProject", project.getId().toString());
-		} else {
-			Logger.error("Project %s not found in the db!", projectId);
-			render("errors/500.html");
-		}
-	}
 
 	/**
 	 * Create new project from form
@@ -232,4 +168,33 @@ public class ProjectController extends Controller {
 		}
 		projectList();
 	}
+
+    /**
+     * Save an image of a project
+     * @param imageUrl
+     * @param idProject
+     */
+    public static void imageSaved(String imageUrl, String idProject){
+        Logger.info("url received " + imageUrl + " for project " + idProject);
+
+        notFoundIfNull(imageUrl);
+
+        Project project = Project.findById(idProject);
+
+        if (project != null){
+            Logger.info("saving image...");
+            Image projectImage = new Image();
+            projectImage.url = imageUrl;
+            //projectImage.project = project;
+            projectImage.save();
+
+            project.images.add(projectImage);
+            project.save();
+
+            flash.success("project.image.upload.success");
+
+        }
+
+        renderJSON("{\"imageUrl\": \"" + imageUrl +"\"}");
+    }
 }

@@ -1,15 +1,18 @@
 package models;
 
-import play.modules.morphia.Model;
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Reference;
+import play.modules.morphia.Model;
 
 @Entity
 public class Image extends Model {
 
-	public String name;
+	public String url;
+    public String headline;
+    public String description;
+    public Boolean isMain;
 
-	public String toString() {
-		return name;
-	}
 
+    @Reference
+    private Project project;
 }

@@ -1,83 +1,99 @@
 <div class="page-header">
-	<h3>&{'views.general.images'}</h2>
+	<h3>
+		&{'views.general.images'}
+		</h3>
 </div>
 
-<!-- IMAGE UPLOAD-->
-<!--<input type="file" name="photo" class="file-input">
-<div class="form-actions">
-<button type="submit" class="btn btn-primary">
-&{'views.project.image.upload'}
-</button>
 
-<div id="file-uploader">
-<noscript>
-<p>
-Please enable JavaScript to use file uploader.
-</p>
-<!-- or put a simple form for upload here
-</noscript>
-
-<script>
-function createUploader() {
-var uploader = new qq.FileUploader({
-element : document.getElementById('file-uploader'),
-action : '/upload',
-params : {
-projectId : '&{_project._id}'
-},
-debug : true
-});
-}
-
-// in your app create uploader as soon as the DOM is ready
-// don't wait for the window to load
-window.onload = createUploader;
-</script>
+<!--  image list -->
+<div class="row span9 imageList">
+	<ul class="imageList">
+        #{list _project.images, as:'image', }
+            <li><img height="150px" width="150px" src=${image.url} /></li>
+        #{/list}
+        <li style="display:none"><img alt="image"
+                 height="0" width="0" id="image-preview" /> <br />Preview</li>
+		<li id="uploaderItem"><img src="@{'/public/images/camera.png'}" alt="image"
+			height="150px" width="150px" id="image-upload-icon" /> <br />Upload
+			a new picture</li>
+	</ul>
 </div>
-</div>-->
-
-<!--<div class="row span9 imageUpload">
-	<div id="imagePreview">
-		<img id="thumb" src="http://placehold.it/120x120" alt="">
-	</div>
-		
-	<div id="uploadControlWrapper" class="span2">
-		<!--#{form @ProjectController.saveImage(_project._id), enctype:'multipart/form-data', id:"formImage"} #{/form} -->
-
-		<!--<form id="uploadImage" action="/upload">
-			<label>Upload a new picture</label>
-			<input type="file" id="imageUpload" size="20">
-			<button type="submit" class="button btn btn-primary btn-small">
-				Save
-			</button>
-		</form>
-	</div>
-</div>-->
 <br />
 
-#{list _images, as:'image'}
+<!--Import the Aviary and Filepicker.io scripts-->
+<script src='http://feather.aviary.com/js/feather.js'></script>
+<script src='//api.filepicker.io/v1/filepicker.js'></script>
+<!--Your application-->
+<script type='text/javascript'>
+	//Setup Filepicker.io - to get an apikey, go to https://developers.filepicker.io/register/
+	filepicker.setKey('AGP5KGrHCRGuPFBHW2ruQz');
 
-<img src="${image.url}" >
+	//Setup Aviary
+	var featherEditor = new Aviary.Feather({
+		apiKey : '2bd8dfdcb',
+		apiVersion : 2,
+		onSave : function(imageID, newURL) {
+			//Export the photo to the cloud using Filepicker.io!
+			console.log(newURL);
+			var fpfile = {
+				url : this.url,
+				isWriteable : true
+			};
 
-#{/}
+			filepicker.writeUrl(fpfile, newURL, function(FPFile) {
+				console.log(JSON.stringify(FPFile));
+                var data = {
+                    idProject : '${_project._id}',
+                    imageUrl : FPFile.url
+                }
+                var updateUserRoute = #{jsRoute @ProjectController.imageSaved() /}
 
-<script type="text/javascript" charset="utf-8">
-function initImageUpload(){
-	var thumb = $('img#thumb');	
+               //make ajax call
+                $.ajax({
+                    url: updateUserRoute.url(),
+                    type: updateUserRoute.method,
+                    data: data,
+                    dataType: "json",
+                    success: (function(data){
+                        console.log("got here");
 
-	new AjaxUpload('imageUpload', {
-		action: $('form#uploadImage').attr('action'),
-		name: 'image',
-		onSubmit: function(file, extension) {
-			$('div.preview').addClass('loading');
-		},
-		onComplete: function(file, response) {
-			thumb.load(function(){
-				$('div.preview').removeClass('loading');
-				thumb.unbind();
+                        var itemElement = document.createElement('li');
+                        var img = document.createElement('img');
+                        //disable the cache for the new image
+                        img.src=data.imageUrl+ "?dummy";
+                        itemElement.appendChild(img);
+
+                        $('#uploaderItem').before(itemElement);
+                    }),
+                    error: function( xhr,err ) {
+                        console.log( 'Sample of error data:', err );
+                        console.log("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\nresponseText: "+xhr.responseText);
+                    }
+
+                });
+				
 			});
-			thumb.attr('src', response);
-		}
+		},
+		maxSize : 400
 	});
-}
+
+	//Giving a placeholder image while Aviary loads
+	var preview = document.getElementById('image-preview');
+
+	//When the user clicks the button, import a file using Filepicker.io
+	var editPane = document.getElementById('image-upload-icon');
+	editPane.onclick = function() {
+		filepicker.pick({
+			mimetype : 'image/*'
+		}, function(fpfile) {
+			//Showing the preview
+			preview.src = fpfile.url;
+
+			//Launching the Aviary Editor
+			featherEditor.launch({
+				image : preview,
+				url : fpfile.url
+			});
+		});
+	};
 </script>

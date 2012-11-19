@@ -44,11 +44,11 @@ public class FTPHelper {
 			}
 
 		} catch (SocketException ex) {
-			Logger.error("Error while trying to connect to the Image Repository");
+			Logger.error("Error while trying to connect to the ImageBak Repository");
 			ex.printStackTrace();
 			ftp = null;
 		} catch (IOException ex) {
-			Logger.error("Error while trying to connect to the Image Repository");
+			Logger.error("Error while trying to connect to the ImageBak Repository");
 			ex.printStackTrace();
 			ftp = null;
 		}
@@ -72,7 +72,7 @@ public class FTPHelper {
 			if (ftp.storeFile(image.getName(), in)){
 				remoteUrl = IMAGE_REPO_HOSTNAME + "/" + Constants.IMAGE_REPO_PROJECT_DIR + "/" + projectId + "/" + image.getName();
 			}
-			Logger.info("Image uploaded sucessfully!");
+			Logger.info("ImageBak uploaded sucessfully!");
 		} catch (FileNotFoundException e1) {
 			Logger.error("Error while creating the Input Stream");
 			e1.printStackTrace();
@@ -119,7 +119,7 @@ public class FTPHelper {
 			if (ftp.storeFile(fileName, data)){
 				remoteUrl = IMAGE_REPO_HOSTNAME + "/" + Constants.IMAGE_REPO_PROJECT_DIR + "/" + projectId + "/" + fileName;
 			}
-			Logger.info("Image uploaded sucessfully!");
+			Logger.info("ImageBak uploaded sucessfully!");
 		} catch (FileNotFoundException e1) {
 			Logger.error("Error while creating the Input Stream");
 			e1.printStackTrace();

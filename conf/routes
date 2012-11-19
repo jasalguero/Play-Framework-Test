@@ -16,14 +16,11 @@ GET		/projects								ProjectController.projectList
 GET		/project/edit/{idProject}				ProjectController.editProject
 POST	/project/edit							ProjectController.saveProject
 GET		/project/delete/{idProject}				ProjectController.deleteProject
-POST	/project/saveImage						ProjectController.saveImage
+POST	/imageSaved								ProjectController.imageSaved
 
 # Application
 GET		/changeLang/{lang}						Application.changeLang
 GET		/images									Application.showImageList
-GET		/image/{idImage}						Application.displayImage
-POST	/upload									Application.uploadFiles
-GET		/imageUploader							Application.imageUploader
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

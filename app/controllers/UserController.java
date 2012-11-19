@@ -1,9 +1,9 @@
 package controllers;
 
-import java.util.List;
-
 import models.Country;
 import play.mvc.Controller;
+
+import java.util.List;
 
 public class UserController extends Controller {
 

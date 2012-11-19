@@ -4,12 +4,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import play.Logger;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class JsonHelper {
 
 	public static JsonObject getImageUploadResponse(File[] files){
+		Logger.info("Generating json response for %s files", files.length);
 		JsonObject response = new JsonObject();
 		JsonArray elements = new JsonArray();
 		

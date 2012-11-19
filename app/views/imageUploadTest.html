@@ -34,10 +34,11 @@
 	<div class="row fileupload-buttonbar">
 		<div class="span7">
 			<!-- The fileinput-button span is used to style the file input field as button -->
-			<span class="btn btn-success fileinput-button"> <i class="icon-plus icon-white"></i> <span>Add files...</span>
-				<input type="file" name="files[]" multiple>
-				<input id="fileupload" type="file" name="files[]" multiple>
-			</span>
+			<span class="btn btn-success fileinput-button">
+                    <i class="icon-plus icon-white"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="files[]" multiple>
+                </span>
 			<button type="submit" class="btn btn-primary start">
 				<i class="icon-upload icon-white"></i>
 				<span>Start upload</span>
@@ -60,35 +61,14 @@
 	<div class="fileupload-loading"></div>
 	<br>
 	<!-- The table listing the files available for upload/download -->
-	<table role="presentation" class="table table-striped">
-		<tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
-		<!-- EXAMPLE ROW -->
-		<tr class="template-upload fade in">
-        <td class="preview"><span class="fade in"><canvas width="64" height="80"></canvas></span></td>
-        <td class="name"><span>testImage.jpg</span></td>
-        <td class="size"><span>43.08 KB</span></td>
-        
-            <td>
-                <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
-            </td>
-            <td class="start">
-                <button class="btn btn-primary">
-                    <i class="icon-upload icon-white"></i>
-                    <span>Start</span>
-                </button>
-            </td>
-        
-        <td class="cancel">
-            <button class="btn btn-warning">
-                <i class="icon-ban-circle icon-white"></i>
-                <span>Cancel</span>
-            </button>
-        </td>
-    </tr>
-		
-		
-		
-	</table>
+	<table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+
+	#{/form}
+	
+	
+	#{form @@Application.uploadFiles(), enctype:'multipart/form-data'}
+        <input type="file" id="multiple" name="files" multiple>
+        <input type="submit">
 	#{/form}
 </div>
 
