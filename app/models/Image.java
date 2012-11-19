@@ -1,23 +1,15 @@
 package models;
 
-import java.io.File;
-
-import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Reference;
-
-import play.modules.morphia.Blob;
 import play.modules.morphia.Model;
-import utils.S;
+import com.google.code.morphia.annotations.Entity;
 
 @Entity
-public class Image extends Model{
-	
-	public String url;	
-	public String headline;
-	public String description;
-	public Boolean isMain;
-	
-	@Reference(ignoreMissing=true)
-	public Project project;
-	
+public class Image extends Model {
+
+	public String name;
+
+	public String toString() {
+		return name;
+	}
+
 }
