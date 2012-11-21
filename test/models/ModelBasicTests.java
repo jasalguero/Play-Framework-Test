@@ -63,10 +63,24 @@ public class ModelBasicTests extends UnitTest {
 		assertNotNull(admin);
 		assertEquals("firstUserTest", admin.username);
 		assertTrue(beforeList.size() < User.findAll().size());
-		
+
 		//admin.delete();
 		//assertTrue(beforeList.size() == User.findAll().size());	
 	}
+
+    @Test
+    public void tryConnectAsUser() {
+        Logger.info("Inside user model test");
+        // Retrieve country
+        Country global = Country.find("byName","GLOBAL").first();
+        // Create a new user and save it
+        new User("test@senseship.com", "1234", "firstUserTest", global, Constants.UserType.ADMIN.getId()).save();
+
+        // Test
+        assertNotNull(User.connect("test@senseship.com", "1234"));
+        assertNull(User.connect("test@senseship.com", "badpassword"));
+        assertNull(User.connect("tom@gmail.com", "1234"));
+    }
 	
 	@Test
 	public void createProject(){

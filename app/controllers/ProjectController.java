@@ -3,9 +3,11 @@ package controllers;
 import models.*;
 import play.Logger;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import java.util.List;
 
+@With(Secure.class)
 public class ProjectController extends Controller {
 
 	/**
