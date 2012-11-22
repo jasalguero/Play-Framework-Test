@@ -6,8 +6,7 @@
 *       /project                                       module:secure
 
 # Home page
-GET     /                                       UserController.showForm
-GET		/homepage								Application.homepage
+GET     /                                       Application.homepage
 
 # Users
 GET     /register								UserController.showForm
