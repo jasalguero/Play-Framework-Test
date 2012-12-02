@@ -6,10 +6,9 @@
 		<meta charset="${_response_encoding}">
 		
 		<!-- CSS -->
-		
 		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.css'}">
 		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap-responsive.css'}">
-
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/font-awesome.css'}">
 
 		#{get 'moreStyles' /}
 
@@ -21,6 +20,22 @@
 		#{navBar /}
 		#{doLayout /}
 	</body>
+
+
+    <!-- FOOTER LINKS -->
+    <footer class="footer" data-spy="affix-bottom">
+        <div class="row">
+            <div class="span2 offset2 menuItem">
+                <h4><a href="#">About</a></h4>
+            </div>
+            <div class="span2 offset2 menuItem">
+                <h4><a href="#">Service</a></h4>
+            </div>
+            <div class="span2 offset2 menuItem">
+                <h4><a href="#">Legal</a></h4>
+            </div>
+        </div>
+    </footer>
 	
 	<!-- JAVASCRIPT -->
 	<script src="@{'/public/javascripts/jquery-1.7.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>

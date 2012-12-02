@@ -65,6 +65,7 @@
     color: #333 !important;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.59);
     -webkit-font-smoothing: antialiased;
+    font-weight: bold;
 }
 
 /***********************************************/
@@ -78,10 +79,6 @@
     -moz-box-shadow:    none !important;
     -webkit-box-shadow: none !important;
     box-shadow:         none !important;
-}
-
-.container {
-	margin-top: 100px;
 }
 
 .navbar .container {
@@ -153,10 +150,10 @@ h2 {
 }
 
 /* Customization */
-body {
-	padding-top: 30px;
+body, label {
 	font-family: Helvetica-neue;
 	font-family: 'SansationRegular', Fallback, Helvetica;
+    font-size: 16px;
 }
 
 .bgWrapper {
@@ -167,11 +164,9 @@ body {
 
 h1 {
 	font-family: 'SansationBold', Fallback, Helvetica;
+    margin-bottom: 40px;
 }
 
-body {
-
-}
 .sidebar-nav {
 	padding: 9px 0;
 }
@@ -203,13 +198,27 @@ a:hover {
 
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select[multiple], select[size] {
 	-webkit-box-shadow: #666 3px 2px 5px;
-		box-shadow: #666 3px 2px 5px;
-
+    box-shadow: #666 3px 2px 5px;
     -moz-box-shadow: 5px 5px 5px #ccc;
     -webkit-box-shadow: 5px 5px 5px #ccc;
     box-shadow: 5px 5px 5px #ccc;
-	
+    font-size: 20px;
 }
+
+select, input[type="submit"] {
+    height: 40px;
+    font-size: 20px;
+}
+
+input[type="text"], input[type="password"]{
+    height: 28px;
+}
+
+.row{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 
 
 /*==========================================*/
