@@ -50,6 +50,23 @@
 	font-style: normal;
 }
 
+.btn-custom {
+    background-color: hsl(125, 40%, 44%) !important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b7e0bb", endColorstr="#439d4a");
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#b7e0bb), to(#439d4a));
+    background-image: -moz-linear-gradient(top, #b7e0bb, #439d4a);
+    background-image: -ms-linear-gradient(top, #b7e0bb, #439d4a);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b7e0bb), color-stop(100%, #439d4a));
+    background-image: -webkit-linear-gradient(top, #b7e0bb, #439d4a);
+    background-image: -o-linear-gradient(top, #b7e0bb, #439d4a);
+    background-image: linear-gradient(#b7e0bb, #439d4a);
+    border-color: #439d4a #439d4a hsl(125, 40%, 35%);
+    color: #333 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.59);
+    -webkit-font-smoothing: antialiased;
+}
+
 /***********************************************/
 /**********  	NAV BAR			 		********/
 /***********************************************/
@@ -71,22 +88,29 @@
 	margin-top: 0px;
 }
 
+.menuItem li{
+    padding: 10px;
+}
+
 .menuItem a {
 	display: block;
 	padding: 10px;
 	padding-left: 20px;
 	padding-right: 20px;
-	width: 100px;
-	font-size: 15px;
+
+	font-size: 18px;
 	text-align: center;
 }
 
 .menuItem h4 > a:hover {
 	background-color: #329553;
 	color: white;
-	moz-box-shadow: 3px 3px 4px #000;
+	/*moz-box-shadow: 3px 3px 4px #000;
 	-webkit-box-shadow: 3px 3px 4px #000;
-	box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000; */
+    -moz-box-shadow: 5px 5px 5px #ccc;
+    -webkit-box-shadow: 5px 5px 5px #ccc;
+    box-shadow: 5px 5px 5px #ccc;
 	/* For IE 8 */
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
 	/* For IE 5.5 - 7 */
