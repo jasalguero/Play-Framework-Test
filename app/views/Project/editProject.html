@@ -1,5 +1,6 @@
-#{extends 'developTemplate.html' /}
+#{extends 'parentTemplate.html' /}
 #{set title:'Edit Project' /}
+#{set bodyExtra: "data-spy='scroll' data-target='.bs-docs-sidebar' data-twttr-rendered='true'"/}
 #{set 'moreStyles'}
 	#{stylesheet 'leaflet.css' /}
 	<!--[if lte IE 8]>
@@ -11,8 +12,9 @@
 
 <div class="container">
 
+
 	<div class="row">
-		<div class="span8 page-header">
+		<div class="span12 page-header">
 			<h1>&{'views.project.new.header'}</h1>
 		</div>
 	</div>
@@ -28,8 +30,30 @@
 		</div>
 	</div>
 	#{/if}
+
+    <div class="row">
+        <div class="bs-docs-sidebar span3 editProjectSideBar">
+            <ul class="nav nav-list bs-docs-sidenav affix">
+                <li><a href="#basicInfo"><i class="icon-chevron-right"></i><i class="icon-book"></i> &{'views.project.new.menu.basicInfo'}</a></li>
+                <li><a href="#images"><i class="icon-chevron-right"></i><i class="icon-camera"></i> &{'views.project.new.menu.images'}</a></li>
+                <li><a href="#location"><i class="icon-chevron-right"></i><i class="icon-map-marker"></i> &{'views.project.new.menu.location'}</a></li>
+            </ul>
+        </div>
+        <div class="span9 editProjectContent">
+            <section id="basicInfo">
+                #{project/basicInfo project:project, categories:categories, cities:cities /}
+            </section>
+            <section id="images">
+                #{project/images project:project /}
+            </section>
+            <section id="location">
+                #{project/location /}
+            </section>
+        </div>
+    </div>
+</div>
 	
-	<div class="row">
+	<!--<div class="row">
 		<div class="span11">
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
@@ -43,21 +67,11 @@
 						<a href="#tabLocation" data-toggle="tab" id="link3">&{'views.project.new.menu.location'}</a>
 					</li>
 				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="tabBasic">
-						#{project/basicInfo project:project, categories:categories, cities:cities /}
-					</div>
-					<div class="tab-pane" id="tabImages">
-						#{project/images project:project /}
-					</div>
-					<div class="tab-pane" id="tabLocation">
-						#{project/location /}
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 #{set 'moreScripts'}
     #{script 'fileuploader.js'/}

@@ -1,43 +1,47 @@
-<fieldset>
-	<legend>
-		&{'views.project.location'}
-	</legend>
 
-	<p>
-		&{'views.project.location.select'}</>
+<div class="sectionHeader">
+    <h3>
+    &{'views.project.location'}
+    </h3>
+    <p class="muted">
+    &{'views.project.location.select'}
+    </p>
+</div>
 
-		<div class="row span 8">
-			<input type="text" class="input-xxlarge" id="userAddress" name="address.input" value="" placeholder="&{'views.project.location.input.info'}"/>
-			<button class="btn btn-primary" onclick="searchAddress()">
-				&{'views.project.location.search'}
-			</button>
-		</div>
+<div class="mapControls">
+    <input type="text" class="input-xxlarge span5" id="userAddress" name="address.input" value="" placeholder="&{'views.project.location.input.info'}"/>
+    <button class="btn btn-primary btn-large span2" onclick="searchAddress()">
+        &{'views.project.location.search'}
+    </button>
+</div>
 
-		<div class="row">
-			<div id="mapContainer" class="span9" style="height: 300px;"></div>
-		</div>
-		<div class="row">
-			<div class="alert alert-info span8" id="mapResult">
-				<span id="mapResultTitle" >&{'views.project.location.selected'}</span>
-				<p>
-					<span id="mapResultAddress"></span>
-				</p>
-			</div>
-		</div>
 
-</fieldset>
+
+
+<div class="row">
+    <div id="mapContainer" class="span9" style="height: 300px;"></div>
+</div>
+<div class="row">
+    <div class="alert alert-info span8" id="mapResult">
+        <span id="mapResultTitle" >&{'views.project.location.selected'}</span>
+        <p>
+            <span id="mapResultAddress"></span>
+        </p>
+    </div>
+</div>
+
 
 
 <script type="text/javascript" charset="utf-8">
-function initMap(){
-	var options = {
-		'latitude' : '52.5015955',
-		'longitude' : '13.4023271',
-		'container' : "mapContainer",
-		'zoom' : 13
-	}
-	createMap(options);
-	projectMap.on('click', onMapClick);
-	fixMapInMenu(projectMap, "#link3"); 
-}
+    function initMap(){
+        var options = {
+            'latitude' : '52.5015955',
+            'longitude' : '13.4023271',
+            'container' : "mapContainer",
+            'zoom' : 13
+        }
+        createMap(options);
+        projectMap.on('click', onMapClick);
+        fixMapInMenu(projectMap, "#link3");
+    }
 </script>
