@@ -16,12 +16,23 @@
                     </li>
                     <li>
                         <div class="span2 menuItem">
-                            <h4>#{a @Secure.login()}Register / Login#{/a}</h4>
+                            #{if session.username}
+                                <h4>#{a @Secure.logout()}Logout#{/a}</h4>
+                            #{/if}
+                            #{else}
+                                <h4>#{a @Secure.login()}Register / Login#{/a}</h4>
+                            #{/else}
+
                         </div>
                     </li>
 
                 </ul>
-                <ul class="nav pull-right menuItem span3">
+                <ul class="nav pull-right menuItem span4">
+                    <li>
+                        #{if session.username}
+                            <div class="loggedUser navbar-text">Logged as <br/><a href="#">&{session.username}</a></div>
+                        #{/if}
+                    </li>
                     <li id="fat-menu" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> &{'menu.languages'} <b class="caret"></b> </a>
                         <ul class="dropdown-menu " role="menu" aria-labelledby="drop3">

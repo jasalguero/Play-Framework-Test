@@ -11,43 +11,51 @@
     </div>
 		
 	#{form @authenticate()}
-		
-		#{if flash.error}
-			<p class="error">
-				&{flash.error}
-			</p>
-		#{/if}
-		#{if flash.success}
-			<p class="success">
-				&{flash.success}
-			</p>
-		#{/if}
 
         <div class="row">
+            <div class="span7 offset3">
+                #{if flash.error}
+                    <div class="alert alert-error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>&{flash.error}</strong>
+                    </div>
+                #{/if}
+                #{if flash.success}
+                    <p class="success">
+                    &{flash.success}
+                    </p>
+                #{/if}
+            </div>
+        </div>
+		
+
+
+        <div class="controls controls-row">
             <div class="span3 offset3">
                 <p id="username-field">
-                    <label for="username">&{'secure.username'}</label>
+                    <label for="email">Email:</label>
                 </p>
             </div>
             <div class="span5">
-                <input type="text" name="username" id="username" value="${flash.username}" />
+                <input type="text" class="input-xlarge" name="username" id="email" value="${flash.username}" />
             </div>
         </div>
-        <div class="row">
+        <div class="controls controls-row">
             <div class="span3 offset3">
                 <p id="password-field">
-                <label for="password">&{'secure.password'}</label>
+                <label for="password">Password:</label>
                 </p>
             </div>
             <div class="span5">
-                <input type="password" name="password" id="password" value="" />
+                <input type="password" class="input-xlarge" name="password" id="password" value="" />
             </div>
         </div>
-        <div class="row">
-            <div class="span3 offset3">
+        <div class="controls controls-row">
+            <div class="controls span3 offset3">
+                <label class="checkbox" for="remember">
+                    <input type="checkbox" class="regular-checkbox input-xlarge" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} /> Remember me
+                </label>
 
-                    <input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
-                    <label for="remember">&{'secure.remember'}</label>
 
             </div>
             <div class="span5">
@@ -56,7 +64,7 @@
                 </p>
             </div>
         </div>
-        <div class="row">
+        <div class="controls controls-row">
             <div class="span4 offset4">
                 <input type="submit" class="btn btn-custom btn-success span4 offset3" id="signin" value="&{'secure.signin'}" />
             </div>

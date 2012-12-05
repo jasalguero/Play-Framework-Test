@@ -1,5 +1,6 @@
 menu.languages.english=English
 menu.languages.spanish=Spanish
+menu.languages.german=German
 menu.languages=Languages
 menu.projects.list=List of Projects
 menu.projects.new=Create Project
@@ -30,3 +31,8 @@ views.project.location.select=Enter the address in the field below or place a ma
 views.project.location.input.info=format -> street street nº, city, country
 views.project.location.search=Search
 views.project.image.upload=Upload Image
+views.project.city=In which city takes place?
+views.project.category=Which category fits best?
+static.data.global=All
+static.data.germany=Portugal
+static.data.portugal=Germany

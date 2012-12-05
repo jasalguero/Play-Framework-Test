@@ -2,44 +2,81 @@
 #{set title:'Registration' /}
 
 <div class="container">
-<div class="row">
-	<div class="span8 page-header">
-		<h1>Registration</h1>
-	</div>
-</div>
 
-<div class="span7">
-	<form class="form-horizontal well">
- 		<fieldset>
-    		<legend>Basic Account Information</legend>
-    
-    		<!-- USERNAME -->
-			<div class="control-group">
-		      <label class="control-label" for="username">Username</label>
-		      <div class="controls">
-		        <input type="text" class="input-xlarge" id="username">
-		        <p class="help-block">Supporting help text</p>
-		      </div>
-		     </div>
-		      
-		    <!-- EMAIL -->
-		      <div class="control-group">
-		      <label class="control-label" for="email">Email</label>
-		      <div class="controls">
-		        <input type="text" class="input-xlarge" id="email">
-		        <p class="help-block">Supporting help text</p>
-		      </div>
-		     </div>
-		      
-		      <!-- COUNTRY -->
-		      <div class="control-group">
-		      <label class="control-label" for="country">Country</label>
-		      <div class="controls">
-		        #{select 'country', items:allCountries, valueProperty:'id', labelProperty:'name', class:"span2 test", id:'country', size:0 /}    
-		        <p class="help-block">Supporting help text</p>
-		      </div>
-		</div>
-	<fieldset>
-</form>
-</div>
+
+    <div class="row">
+        <div class="span4 offset4 page-header">
+            <h1>Registration</h1>
+        </div>
+    </div>
+
+
+    #{if flash.error}
+        <p class="error">
+        &{flash.error}
+        </p>
+    #{/if}
+    #{if flash.success}
+        <p class="success">
+        &{flash.success}
+        </p>
+    #{/if}
+
+    <form>
+        <div class="row">
+            <div class="span3 offset3">
+                <p id="email-field">
+                    <label for="email">Email:</label>
+                </p>
+            </div>
+            <div class="span5">
+                <input type="text" name="email" class="input-xlarge" id="email" value="${flash.email}" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3 offset3">
+                <p id="username-field">
+                    <label for="username">Name</label>
+                </p>
+            </div>
+            <div class="span5">
+                <input type="text" name="username" class="input-xlarge" id="username" value="${flash.username}" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3 offset3">
+                <p id="password-field">
+                    <label for="password">Password</label>
+                </p>
+            </div>
+            <div class="span5">
+                <input type="password" name="password" class="input-xlarge" id="password" value="" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3 offset3">
+                <p id="country-field">
+                    <label for="password">Country</label>
+                </p>
+            </div>
+            <div class="span5">
+            #{select 'country', items:allCountries, valueProperty:'id', labelProperty:'name', class:"span2 test", id:'country', size:0,class:'input-xlarge' /}
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3 offset3">
+
+            </div>
+            <div class="span5">
+                <p id="new-user">
+                    <span>Already have an account? Login #{a @Secure.login()}here#{/a}</span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span4 offset4">
+                <input type="submit" class="btn btn-custom btn-success span4 offset3" id="registering" value="Create Account" />
+            </div>
+        </div>
+    </form>
 </div>

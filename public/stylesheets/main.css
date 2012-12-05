@@ -219,6 +219,16 @@ input[type="text"], input[type="password"]{
     margin-bottom: 5px;
 }
 
+.loggedUser, .loggedUser a{
+    font-size:12px;
+    display:inline-block;
+    line-height: 5px;
+}
+
+.loggedUser{
+    margin-top: 25px;
+}
+
 
 
 /*==========================================*/

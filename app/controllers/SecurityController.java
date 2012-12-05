@@ -10,16 +10,16 @@ public class SecurityController extends Secure.Security {
 
     /**
      * Login the user
-     * @param username
+     * @param email
      * @param password
      * @return
      */
-    public static boolean authenticate(String username, String password) {
-        User user = User.connect(username,password);
+    public static boolean authenticate(String email, String password) {
+        User user = User.connect(email,password);
         boolean result = (user != null && user.password.equals(password));
 
         if (result){
-            session.put("username",user.username);
+            session.put("username",user.email);
         }
         return (user != null);
     }
