@@ -3,15 +3,18 @@
 
 <div class="container">
 
+    <!-- TODO localize messages -->
 
+    <!-- HEADER -->
     <div class="row">
         <div class="span4 offset4 page-header">
             <h1>Please login</h1>
         </div>
     </div>
-		
-	#{form @authenticate()}
 
+    #{form @authenticate()}
+
+        <!-- NOTIFICATION AREA -->
         <div class="row">
             <div class="span7 offset3">
                 #{if flash.error}
@@ -27,9 +30,8 @@
                 #{/if}
             </div>
         </div>
-		
 
-
+        <!-- FORM AREA -->
         <div class="controls controls-row">
             <div class="span3 offset3">
                 <p id="username-field">
@@ -43,7 +45,7 @@
         <div class="controls controls-row">
             <div class="span3 offset3">
                 <p id="password-field">
-                <label for="password">Password:</label>
+                    <label for="password">Password:</label>
                 </p>
             </div>
             <div class="span5">
@@ -55,8 +57,6 @@
                 <label class="checkbox" for="remember">
                     <input type="checkbox" class="regular-checkbox input-xlarge" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} /> Remember me
                 </label>
-
-
             </div>
             <div class="span5">
                 <p id="new-user">
@@ -69,11 +69,5 @@
                 <input type="submit" class="btn btn-custom btn-success span4 offset3" id="signin" value="&{'secure.signin'}" />
             </div>
         </div>
-
-
-
-
-
-        </div>
-	#{/form}
+    #{/form}
 </div>
