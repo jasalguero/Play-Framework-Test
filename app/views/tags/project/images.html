@@ -16,9 +16,13 @@
         #{/list}
         <li style="display:none"><img alt="image"
                  height="0" width="0" id="image-preview" /> <br />Preview</li>
-		<li id="uploaderItem"><img src="@{'/public/images/camera.png'}" alt="image"
-			height="150px" width="150px" id="image-upload-icon" /> <br />Upload
-			a new picture</li>
+		<li id="uploaderItem">
+            <div class="imgIcon shadow">
+                <i class="icon-camera-retro"></i>
+                <br />Upload a new picture
+            </div>
+
+        </li>
 	</ul>
 </div>
 <br />
@@ -84,7 +88,7 @@
 	var preview = document.getElementById('image-preview');
 
 	//When the user clicks the button, import a file using Filepicker.io
-	var editPane = document.getElementById('image-upload-icon');
+	var editPane = document.getElementById('uploaderItem');
 	editPane.onclick = function() {
 		filepicker.pick({
 			mimetype : 'image/*'
