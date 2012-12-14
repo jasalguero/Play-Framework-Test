@@ -97,10 +97,12 @@
 
 	font-size: 18px;
 	text-align: center;
+    text-shadow: rgba(18, 54, 9, 0.46) 0px 2px 5px;
 }
 
 .menuItem h4 > a:hover {
-	background-color: #329553;
+	/*background-color: #329553;  */
+    background-color: rgba(50, 149, 83, 0.69);
 	color: white;
 	/*moz-box-shadow: 3px 3px 4px #000;
 	-webkit-box-shadow: 3px 3px 4px #000;
@@ -127,6 +129,14 @@
 	border-top-color: #329553 !important;
 	border-bottom-color: #329553 !important;
 }
+
+.page-header{
+    text-shadow: rgba(18, 54, 9, 0.7) 0px 2px 5px;
+}
+
+
+
+
 /*------------------------------------------------
 * Sidenav for Docs
 -------------------------------------------------- */

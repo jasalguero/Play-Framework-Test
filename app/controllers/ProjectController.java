@@ -129,8 +129,10 @@ public class ProjectController extends Controller {
 	 * Shows a list of all the created projects in the system
 	 */
 	public static void projectList() {
-		Logger.info("Retrieving all the projects");
-		List<Project> projects = Project.findAll();
+		Logger.info("Retrieving all the projects for user %s", session.get("username"));
+		//List<Project> projects = Project.findAll();
+        User user = User.find("email", session.get("username")).first();
+        List<Project> projects = Project.find("owner", user).asList();
 
 		render("Project/projectList.html", projects);
 	}

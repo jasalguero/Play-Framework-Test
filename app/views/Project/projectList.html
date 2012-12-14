@@ -1,18 +1,18 @@
-#{extends 'developTemplate.html' /}
+#{extends 'parentTemplate.html' /}
 #{set title:'List of projects' /}
 
 <div class="container">
 
 	<!-- HEADER -->
-	<div class="row">
-		<div class="span8 page-header">
-			<h1>Projects</h1>
-		</div>
-	</div>
+
+        <div class="span12">
+            <h1>These are your current projects</h1>
+        </div>
+
 
 	<!-- NOTIFICATION -->
 	#{if flash.success}
-	<div class="row-fluid">
+	<div class="row">
 		<div class="alert alert-success fade in">
 			<button class="close" data-dismiss="alert">
 				×
@@ -23,33 +23,30 @@
 	#{/if}
 
 	<!-- TABLE LIST -->
-	<div class="row-fluid">
-		<div class="span7">
-			<table class="table table-striped table-bordered">
+	<div class="row">
+			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
-						<th> Id </th>
 						<th> Name </th>
 						<th> Headline </th>
+                        <th> Date Created </th>
 						<th> Actions </th>
 					</tr>
 				</thead>
 				<tbody>
 					#{list items:projects, as:'project'}
 					%{projectId = project.id.toString()}%
-					
 					<tr>
-						<td> ${project.id} </td>
 						<td> ${project.name} </td>
 						<td> ${project.headline} </td>
-						<td> #{a @@ProjectController.showProject(project.id)}<i class="icon-search"></i> #{/a} </td>
-						<td> #{a @ProjectController.editProject(project.id)}<i class="icon-edit"></i> #{/a} </td>
-						<td> #{a @@ProjectController.deleteProject(project.id)}<i class="icon-trash"></i> #{/a} </td>
+                        <td> </td>
+						<td class="span1"> #{a @@ProjectController.showProject(project.id)}<i class="icon-search"></i> #{/a} </td>
+						<td class="span1"> #{a @ProjectController.editProject(project.id)}<i class="icon-edit"></i> #{/a} </td>
+						<td class="span1"> #{a @@ProjectController.deleteProject(project.id)}<i class="icon-trash"></i> #{/a} </td>
 					</tr>
 					#{/}
 				</tbody>
 			</table>
-		</div>
 	</div>
 
 </div>
