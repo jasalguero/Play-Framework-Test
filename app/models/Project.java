@@ -17,10 +17,36 @@ public class Project extends Model {
 	
 	@Required
 	public String headline;
+
+    @Required
+    public String subHeadLine;
+
+    public String subHeadLine2;
+
+    @Required
+    public String content_join;
+
+    @Required
+    public String content_when;
+
+    @Required
+    public String content_where;
+
+    @Required
+    public String content_what;
+
+    @Required
+    public String content_more;
+
+    public String contact_mail;
+
+    public String contact_fb;
+
+    public String contact_twitter;
 	
-	@Required
-	public String description;
-	
+//	@Required
+//	public String description;
+//
 	@Required
 	public String goal;
 	

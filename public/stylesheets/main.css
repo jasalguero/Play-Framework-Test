@@ -467,6 +467,46 @@ div.preview.loading {
 	font-weight: bold;
 }
 
+.thumbnail{
+    width:260px;
+    height:260px;
+    float:left;
+}
+
+.headlineRow{
+    height: 260px;
+    font-size: 25px;
+    line-height: 35px;
+}
+
+.headlineRow div span{
+    margin-bottom:40px;
+}
+
+.headlineRow .headline{
+    color: #1F5C33;
+    font-family: SansationBold;
+}
+
+.separator hr{
+    color: #1F5C33;
+    background-color:  #1F5C33;
+    height: 20px;
+}
+
+.projectContent h3{
+    color: #1F5C33;
+    font-family: SansationBold;
+}
+.projectContent h4{
+    font-family: SansationBold;
+}
+
+.projectContent .projectMap{
+    height: 250px;
+
+}
+
 /*
  PROJECT EDIT
  */

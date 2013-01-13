@@ -35,16 +35,93 @@
 	</div>
 	#{/}
 
-	<!-- DESCRIPTION -->
-	#{field 'project.description'}
-	<div class="control-group #{twErrorClass field.name/}">
-		<label class="control-label" for="&{field.name}" >&{'views.project.description'}</label>
-		<div class="controls">
-			<textarea class="input-xxlarge span5" id="${field.name}" name="${field.name}" rows="10" placeholder="&{'views.project.description.info'}">${field.value}</textarea>
-			<span class="help-inline">#{error field.name /}</span>
-		</div>
-	</div>
-	#{/}
+    <!-- SUBHEADLINE -->
+    #{field 'project.subHeadLine'}
+        <div class="control-group #{twErrorClass field.name/}">
+            <label class="control-label" for="&{field.name}" >&{'views.project.subheadline'}</label>
+            <div class="controls">
+                <textarea class="input-xlarge span5" id="subHeadline" name="${field.name}" rows="3" placeholder="&{'views.project.subheadline.info'}">${field.value}</textarea>
+                <span class="help-inline">#{error field.name /}</span>
+            </div>
+        </div>
+    #{/}
+
+    <!-- SUBHEADLINE 2 -->
+    #{field 'project.subHeadLine2'}
+        <div class="control-group #{twErrorClass field.name/}">
+            <label class="control-label" for="&{field.name}" >&{'views.project.subHeadline2'}</label>
+            <div class="controls">
+                <textarea class="input-xlarge span5" id="subHeadline2" name="${field.name}" rows="3" placeholder="&{'views.project.subHeadline2.info'}">${field.value}</textarea>
+                <span class="help-inline">#{error field.name /}</span>
+            </div>
+        </div>
+    #{/}
+
+    <!-- CONTENT HOW TO JOIN -->
+    #{field 'project.content_join'}
+        <div class="control-group #{twErrorClass field.name/}">
+            <label class="control-label" for="&{field.name}" >&{'views.project.join'}</label>
+            <div class="controls">
+                <textarea class="input-xlarge span5" id="join" name="${field.name}" rows="3" placeholder="&{'views.project.join.info'}">${field.value}</textarea>
+                <span class="help-inline">#{error field.name /}</span>
+            </div>
+        </div>
+    #{/}
+
+    <!-- CONTENT WHEN -->
+    #{field 'project.content_when'}
+        <div class="control-group #{twErrorClass field.name/}">
+            <label class="control-label" for="&{field.name}" >&{'views.project.when'}</label>
+            <div class="controls">
+                <textarea class="input-xlarge span5" id="when" name="${field.name}" rows="3" placeholder="&{'views.project.when.info'}">${field.value}</textarea>
+                <span class="help-inline">#{error field.name /}</span>
+            </div>
+        </div>
+    #{/}
+
+    <!-- CONTENT WHERE -->
+    #{field 'project.content_where'}
+        <div class="control-group #{twErrorClass field.name/}">
+            <label class="control-label" for="&{field.name}" >&{'views.project.where'}</label>
+            <div class="controls">
+                <textarea class="input-xlarge span5" id="where" name="${field.name}" rows="3" placeholder="&{'views.project.where.info'}">${field.value}</textarea>
+                <span class="help-inline">#{error field.name /}</span>
+            </div>
+        </div>
+    #{/}
+
+    <!-- CONTENT HOW TO WHAT -->
+    #{field 'project.content_what'}
+        <div class="control-group #{twErrorClass field.name/}">
+            <label class="control-label" for="&{field.name}" >&{'views.project.what'}</label>
+            <div class="controls">
+                <textarea class="input-xlarge span5" id="what" name="${field.name}" rows="3" placeholder="&{'views.project.what.info'}">${field.value}</textarea>
+                <span class="help-inline">#{error field.name /}</span>
+            </div>
+        </div>
+    #{/}
+
+    <!-- CONTENT HOW TO JOIN -->
+    #{field 'project.content_more'}
+        <div class="control-group #{twErrorClass field.name/}">
+            <label class="control-label" for="&{field.name}" >&{'views.project.more'}</label>
+            <div class="controls">
+                <textarea class="input-xlarge span5" id="more" name="${field.name}" rows="3" placeholder="&{'views.project.more.info'}">${field.value}</textarea>
+                <span class="help-inline">#{error field.name /}</span>
+            </div>
+        </div>
+    #{/}
+
+	*{<!-- DESCRIPTION -->}*
+	*{#{field 'project.description'}}*
+	*{<div class="control-group #{twErrorClass field.name/}">}*
+		*{<label class="control-label" for="&{field.name}" >&{'views.project.description'}</label>}*
+		*{<div class="controls">}*
+			*{<textarea class="input-xxlarge span5" id="${field.name}" name="${field.name}" rows="10" placeholder="&{'views.project.description.info'}">${field.value}</textarea>}*
+			*{<span class="help-inline">#{error field.name /}</span>}*
+		*{</div>}*
+	*{</div>}*
+	*{#{/}}*
 
 	<!-- GOAL -->
 	#{field 'project.goal'}
@@ -63,9 +140,7 @@
 		<label class="control-label" for="&{field.name}" >&{'views.project.city'}</label>
 		<div class="controls">
 			#{select 'project.city._id', items:_cities, valueProperty:'id', labelProperty:'name', id:'city', value:project.city._id, class:"span5" /}
-			
-			
-			
+
 			<!-- <select id="${field.name}" name="project.city.id" value="" size="1" id="select">
 				#{list _cities, as:'city'}
 				<option value="city" ${project.city.equals(city) ? 'selected' : ''} >${city.name}</option>
