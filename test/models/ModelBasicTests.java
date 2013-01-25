@@ -89,7 +89,7 @@ public class ModelBasicTests extends UnitTest {
 		Project project = new Project();
 		
 		//Initialize
-		project.description = "Test description";
+		project.content_join = "Test join";
 		project.headline = "Test headline";
 		project.name = "Test name";
 		project.nonProfit = true;
@@ -103,7 +103,7 @@ public class ModelBasicTests extends UnitTest {
 		//Test
 		assertNotNull(storedProject);
 		assertEquals("Test headline", project.headline);
-		assertEquals("Test description", project.description);
+		assertEquals("Test join", project.content_join);
 		assertEquals("Test goal", project.goal);
 		assertTrue(project.nonProfit);
 		
