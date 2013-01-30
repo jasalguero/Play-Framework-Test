@@ -45,6 +45,13 @@ views.user.password.info=Your account password
 views.user.country = Country
 views.user.error.exists=The email indicated is already in use
 
+views.tags.logo.alt = Senseship
+views.tags.createExperience = Create Experience
+views.tags.findExperiences = Find Experiences
+views.tags.logout = Logout
+views.tags.registerLogin = Register / Login
+views.tags.loggedAs = Logged as
+
 static.data.global=All
 static.data.germany=Portugal
 static.data.portugal=Germany

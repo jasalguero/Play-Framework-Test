@@ -3,25 +3,25 @@
     <div id="navbar" class="navbar navbar-static">
         <div class="navbar-inner">
             <div class="container" style="width: auto;">
-                <a class="brand" id="navbar-logo" href="/"><img src="@{'/public/images/logo.jpg'}" alt="Senseship"></a>
+                <a class="brand" id="navbar-logo" href="/"><img src="@{'/public/images/logo.jpg'}" alt="&{'views.tags.logo.alt'}"></a>
                 <ul class="nav" role="navigation">
                     <li>
                         <div class="span2 menuItem">
-                            <h4>#{a @ProjectController.newProject()}Create Experience#{/a}</h4>
+                            <h4>#{a @ProjectController.newProject()}&{'views.tags.createExperience'}#{/a}</h4>
                         </div>
                     </li>
                     <li>
                         <div class="span2 menuItem">
-                            <h4>#{a @ProjectController.projectList()}Find Experiences#{/a}</h4>
+                            <h4>#{a @ProjectController.projectList()}&{'views.tags.findExperiences'}#{/a}</h4>
                         </div>
                     </li>
                     <li>
                         <div class="span2 menuItem">
                             #{if session.username}
-                                <h4>#{a @Secure.logout()}Logout#{/a}</h4>
+                                <h4>#{a @Secure.logout()}&{'views.tags.logout'}#{/a}</h4>
                             #{/if}
                             #{else}
-                                <h4>#{a @Secure.login()}Register / Login#{/a}</h4>
+                                <h4>#{a @Secure.login()}&{'views.tags.registerLogin'}#{/a}</h4>
                             #{/else}
 
                         </div>
@@ -31,7 +31,7 @@
                 <ul class="nav pull-right menuItem span4">
                     <li>
                         #{if session.username}
-                            <div class="loggedUser navbar-text">Logged as <br/><a href="#">&{session.username}</a></div>
+                            <div class="loggedUser navbar-text">&{'views.tags.loggedAs'} <br/><a href="#">&{session.username}</a></div>
                         #{/if}
                     </li>
                     <li id="fat-menu" class="dropdown">
