@@ -12,6 +12,8 @@ import java.util.List;
 @Entity
 public class Project extends Model {
  
+	private static final long serialVersionUID = 1476794560829789939L;
+
 	@Required
 	public String name;
 	
