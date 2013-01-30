@@ -25,7 +25,6 @@ public class Application extends Controller {
 		render("Application/imageList.html", images);
 	}
 
-
 	public static void homepage() {
 		render("homepage.html");
 	}

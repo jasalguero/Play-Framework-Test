@@ -42,6 +42,7 @@ views.user.username=Name
 views.user.username.info=Your name
 views.user.password=Password
 views.user.password.info=Your account password
+views.user.country = Country
 views.user.error.exists=The email indicated is already in use
 
 static.data.global=All
