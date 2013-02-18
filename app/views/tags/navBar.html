@@ -36,11 +36,14 @@
 
                 </ul>
                 <ul class="nav pull-right menuItem span4">
+                    <!-- SHOW USER NAME -->
                     <li>
-                    #{if session.username}
-                        <div class="loggedUser navbar-text">Logged as <br/><a href="#">&{session.username}</a></div>
-                    #{/if}
+                        #{if session.username}
+                            <div class="loggedUser navbar-text">Logged as <br/><a href="#">&{session.username}</a></div>
+                        #{/if}
                     </li>
+
+                    <!-- LANGUAGE SELECTOR -->
                     <li id="fat-menu" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> &{'menu.languages'} <b class="caret"></b> </a>
                         <ul class="dropdown-menu " role="menu" aria-labelledby="drop3">
