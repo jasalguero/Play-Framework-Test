@@ -4,7 +4,7 @@ import models.User;
 
 /**
  * Created with IntelliJ IDEA.
- * User: jsalguero
+ * user: jsalguero
  */
 public class SecurityController extends Secure.Security {
 

@@ -80,7 +80,7 @@ public class ProjectController extends Controller {
 		List<City> cities = project.getPossibleCities();
 		Logger.info("%d cities retrieved", cities.size());
 				
-		render("Project/editProject.html", project, categories, cities);
+		render("project/editProject.html", project, categories, cities);
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class ProjectController extends Controller {
 	public static void createProject(Project project) {
 		// Handle errors
 		if (validation.hasErrors()) {
-			render("Project/editProject.html", project);
+			render("project/editProject.html", project);
 		}
 
 		// Hack because checkbox binding issue
@@ -119,7 +119,7 @@ public class ProjectController extends Controller {
 		// Create the project
 		project.save();
 
-		// flash.success("Project successfully created");
+		// flash.success("project successfully created");
 
 		// Go to the project list page
 		projectList();
@@ -130,11 +130,11 @@ public class ProjectController extends Controller {
 	 */
 	public static void projectList() {
 		Logger.info("Retrieving all the projects for user %s", session.get("username"));
-		//List<Project> projects = Project.findAll();
+		//List<project> projects = project.findAll();
         User user = User.find("email", session.get("username")).first();
         List<Project> projects = Project.find("owner", user).asList();
 
-		render("Project/projectList.html", projects);
+		render("project/projectList.html", projects);
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class ProjectController extends Controller {
 			projectList();
 		} else {
 			Logger.info("Project %s found", idProject);
-			render("Project/project.html", project);
+			render("project/project.html", project);
 		}
 	}
 
