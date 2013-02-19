@@ -1,3 +1,4 @@
+%{project = _project}%
 
 <div class="sectionHeader">
     <h3>
@@ -10,27 +11,41 @@
 
 <div class="mapControls">
     <input type="text" class="input-xxlarge span5" id="userAddress" name="address.input" value="" placeholder="&{'views.project.location.input.info'}"/>
-    <button class="btn btn-primary btn-large span2" onclick="searchAddress()">
+    <button class="btn btn-primary btn-large span2" onclick="searchAddress();return false;">
         &{'views.project.location.search'}
     </button>
 </div>
 
-
-
-
 <div class="row">
     <div id="mapContainer" class="span9" style="height: 300px;"></div>
 </div>
+
 <div class="row">
     <div class="alert alert-info span8" id="mapResult">
-        <span id="mapResultTitle" >&{'views.project.location.selected'}</span>
+        <span id="mapResultTitle" >&{'views.project.location.selected'}</span><br/>
         <p>
-            <span id="mapResultAddress"></span>
+            <span id="mapResultAddress">${project.displayAddress}</span>
         </p>
     </div>
 </div>
 
+#{field 'project.latitude'}
+<input type="hidden" id="${field.name}" name="${field.name}" value="${field.value}"/>
+#{/}
 
+#{field 'project.longitude'}
+<input type="hidden" id="${field.name}" name="${field.name}" value="${field.value}"/>
+#{/}
+
+#{field 'project.displayAddress'}
+<input type="hidden" id="${field.name}" name="${field.name}" value="${field.value}"/>
+#{/}
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-large btn-primary span3">
+    &{'views.project.update'}
+    </button>
+</div>
 
 <script type="text/javascript" charset="utf-8">
     function initMap(){
@@ -42,6 +57,11 @@
         }
         createMap(options);
         projectMap.on('click', onMapClick);
-        fixMapInMenu(projectMap, "#link3");
+
+        //init map with the stored coordinates
+        if($('#project\\.displayAddress').val()){
+            updateMap($('#project\\.latitude').val(),$('#project\\.longitude').val());
+        }
+//        fixMapInMenu(projectMap, "#link3");
     }
 </script>

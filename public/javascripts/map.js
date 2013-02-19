@@ -5,7 +5,7 @@
 var OSM_ADDRESS_SEARCH_URL = "http://nominatim.openstreetmap.org/search?q=";
 var OSM_GEOCODE_SEARCH_URL = "http://nominatim.openstreetmap.org/reverse?format=json";
 var OSM_FINAL_PARAMS = "&format=json&limit=1&email=admin@senseship.org";
-var OSM_DEFAULT_ZOOM = 14;
+var OSM_DEFAULT_ZOOM = 16;
 
 var projectMapMarker;
 var projectMap;
@@ -117,10 +117,40 @@ function printMapResult(response) {
 }
 
 function processReverseGeoSearch(data) {
-	createMarker(data[0].lat, data[0].lon);
+
 	printMapResult(data[0]);
-	var latlng = new L.LatLng(data[0].lat, data[0].lon)
-	projectMap.setView(latlng, OSM_DEFAULT_ZOOM);
+
+    updateMap(data[0].lat, data[0].lon);
+    updateFormFields(data[0]);
+}
+
+/**
+ * Updates the form hidden inputs
+ * @param response
+ */
+function updateFormFields(response){
+    //latitude
+    var lat = response.lat;
+    $('#project\\.latitude').val(lat);
+
+    //longitude
+    var longitude = response.lon;
+    $('#project\\.longitude').val(longitude);
+
+    //address
+    var displayAddress = response.display_name;
+    $('#project\\.displayAddress').val(displayAddress);
+}
+
+/**
+ * Updates the map with the current coordinates
+ * @param latitude
+ * @param longitude
+ */
+function updateMap(latitude, longitude){
+    var latlng = new L.LatLng(latitude,longitude);
+    projectMap.setView(latlng, OSM_DEFAULT_ZOOM);
+    createMarker(latitude, longitude);
 }
 
 function searchAddress() {
@@ -135,6 +165,8 @@ function searchAddress() {
 
 	$.getJSON(url, {}, function(data) {
 		processReverseGeoSearch(data);
-	})
+	});
+
+    return false;
 }
 

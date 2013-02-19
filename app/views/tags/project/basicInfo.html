@@ -1,6 +1,6 @@
 %{project = _project}%
 
-#{form @ProjectController.saveProject(), class:"form-horizontal"}
+
 <fieldset>
     <div class="sectionHeader">
         <h3>
@@ -112,17 +112,6 @@
         </div>
     #{/}
 
-	*{<!-- DESCRIPTION -->}*
-	*{#{field 'project.description'}}*
-	*{<div class="control-group #{twErrorClass field.name/}">}*
-		*{<label class="control-label" for="&{field.name}" >&{'views.project.description'}</label>}*
-		*{<div class="controls">}*
-			*{<textarea class="input-xxlarge span5" id="${field.name}" name="${field.name}" rows="10" placeholder="&{'views.project.description.info'}">${field.value}</textarea>}*
-			*{<span class="help-inline">#{error field.name /}</span>}*
-		*{</div>}*
-	*{</div>}*
-	*{#{/}}*
-
 	<!-- GOAL -->
 	#{field 'project.goal'}
 	<div class="control-group #{twErrorClass field.name/}">
@@ -141,11 +130,11 @@
 		<div class="controls">
 			#{select 'project.city._id', items:_cities, valueProperty:'id', labelProperty:'name', id:'city', value:project.city._id, class:"span5" /}
 
-			<!-- <select id="${field.name}" name="project.city.id" value="" size="1" id="select">
-				#{list _cities, as:'city'}
-				<option value="city" ${project.city.equals(city) ? 'selected' : ''} >${city.name}</option>
-				#{/list}
-			</select> -->
+			*{<!-- <select id="${field.name}" name="project.city.id" value="" size="1" id="select">}*
+				*{#{list _cities, as:'city'}}*
+				*{<option value="city" ${project.city.equals(city) ? 'selected' : ''} >${city.name}</option>}*
+				*{#{/list}}*
+			*{</select> -->}*
 			<span class="help-inline">#{error field.name /}</span>
 		</div>
 	</div>
@@ -185,4 +174,3 @@
 		</button>
 	</div>
 </fieldset>
-#{/form}
