@@ -14,6 +14,17 @@ var projectMap;
 /*				MAP FUNCTIONS								  */
 /**************************************************************/
 
+function initMap(){
+    var options = {
+        'latitude' : '52.5015955',
+        'longitude' : '13.4023271',
+        'container' : "mapContainer",
+        'zoom' : 13
+    };
+    createMap(options);
+    projectMap.on('click', onMapClick);
+}
+
 /**
  * Creates a new Leaflet map with the passing parameters
  * @param latitude
@@ -26,7 +37,7 @@ function createMap(options) {
 		'longitude' : '13.4023271',
 		'container' : 'mapContainer',
 		'zoom' : OSM_DEFAULT_ZOOM
-	}
+	};
 
 	if( typeof options == 'object') {
 		options = $.extend(defaultOptions, options);
@@ -43,6 +54,12 @@ function createMap(options) {
 	var center = new L.LatLng(options.latitude, options.longitude);
 	// geographical point (longitude and latitude)
 	projectMap.setView(center, options.zoom).addLayer(cloudmade);
+    var markerOptions = {
+        'clickable' : false,
+        'draggable' : false,
+        'zoom' : OSM_DEFAULT_ZOOM
+    }
+    createMarker(options.latitude, options.longitude, markerOptions);
 }
 
 /**
@@ -50,7 +67,7 @@ function createMap(options) {
  */
 function onMapClick(e) {
 
-	createMarker(e.latlng.lat, e.latlng.lng, options);
+	createMarker(e.latlng.lat, e.latlng.lng);
 
 	//Update the result div
 	searchForAddres(e.latlng.lat, e.latlng.lng);
@@ -108,12 +125,13 @@ function searchForAddres(latitude, longitude) {
 
 	$.getJSON(url, {}, function(data) {
 		printMapResult(data)
-	})
+	});
 }
 
 function printMapResult(response) {
 	console.log(response);
 	$("#mapResultAddress").html(response.display_name);
+    updateFormFields(response);
 }
 
 function processReverseGeoSearch(data) {

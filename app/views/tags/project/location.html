@@ -48,20 +48,5 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-    function initMap(){
-        var options = {
-            'latitude' : '52.5015955',
-            'longitude' : '13.4023271',
-            'container' : "mapContainer",
-            'zoom' : 13
-        }
-        createMap(options);
-        projectMap.on('click', onMapClick);
 
-        //init map with the stored coordinates
-        if($('#project\\.displayAddress').val()){
-            updateMap($('#project\\.latitude').val(),$('#project\\.longitude').val());
-        }
-//        fixMapInMenu(projectMap, "#link3");
-    }
 </script>

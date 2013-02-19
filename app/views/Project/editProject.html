@@ -8,8 +8,6 @@
 	<![endif]-->
 #{/set}
 
-
-
 <div class="container">
 
 
@@ -41,15 +39,17 @@
             </ul>
         </div>
         <div class="span9 editProjectContent">
-            <section id="basicInfo">
-                #{project/basicInfo project:project, categories:categories, cities:cities /}
-            </section>
-            <section id="images">
-                #{project/images project:project /}
-            </section>
-            <section id="location">
-                #{project/location /}
-            </section>
+            #{form @ProjectController.saveProject(), class:"form-horizontal"}
+                <section id="basicInfo">
+                    #{project/basicInfo project:project, categories:categories, cities:cities /}
+                </section>
+                <section id="images">
+                    #{project/images project:project /}
+                </section>
+                <section id="location">
+                    #{project/location project:project /}
+                </section>
+            #{/form}
         </div>
     </div>
 </div>
@@ -57,17 +57,16 @@
 #{set 'moreScripts'}
     #{script 'fileuploader.js'/}
     #{script 'leaflet.js' /}
-    #{script 'ajaxupload.js' /}
     #{script 'map.js' /}
     <script type="text/javascript">
     $(document).ready(function(){
     	//Init openstreet map
     	initMap();
-    
-    	//Init image uploader form
-    	//initImageUpload()
-    
-    	
+        //init map with the stored coordinates
+        if($('#project\\.displayAddress').val()){
+            updateMap($('#project\\.latitude').val(),$('#project\\.longitude').val());
+        }
+
     });
     </script>
 #{/set}
