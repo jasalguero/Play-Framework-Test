@@ -1,6 +1,13 @@
 #{extends 'parentTemplate.html' /}
 #{set title:'Project' /}
 
+#{set 'moreStyles'}
+    #{stylesheet 'leaflet.css' /}
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="/public/stylesheets/leaflet.ie.css" />
+<![endif]-->
+#{/set}
+
 <div class="container background">
 
 	<!-- TITLE -->
@@ -76,13 +83,12 @@
             #{/if}
             #{if project.content_where != null && project.content_where.length() > 0}
                 <h4>Where</h4>
-                ${project.content_where}
-                <br/>
-                <div class="row" >
-                    <div class="span8 projectMap" style="background-color: blue">
-                    MAP GOES HERE
+                <p>${project.content_where}</p>
+                #{if project.latitude != null && project.latitude.length() > 0}
+                    <div id="mapContainer" style="height:300px">
                     </div>
-                </div>
+                    <input type="hidden" id="mapEnabled" value="true"/>
+                #{/if}
                 <br/>
             #{/if}
             #{if project.content_what != null && project.content_what.length() > 0}
@@ -94,3 +100,21 @@
         </div>
     </div>
 </div>
+
+#{set 'moreScripts'}
+    #{script 'leaflet.js' /}
+    #{script 'map.js' /}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //Init openstreet map
+            if ($('#mapEnabled')){
+                options={
+                    'latitude' : '${project.latitude}',
+                    'longitude' : '${project.longitude}'
+                }
+                createMap(options);
+            }
+
+        });
+    </script>
+#{/set}
