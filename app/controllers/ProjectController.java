@@ -134,7 +134,7 @@ public class ProjectController extends Controller {
         User user = User.find("email", session.get("username")).first();
         List<Project> projects = Project.find("owner", user).asList();
 
-		render("project/projectList.html", projects);
+		render("Project/projectList.html", projects);
 	}
 
 	/**
