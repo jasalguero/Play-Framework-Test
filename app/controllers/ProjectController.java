@@ -130,7 +130,7 @@ public class ProjectController extends Controller {
 	 */
 	public static void projectList() {
 		Logger.info("Retrieving all the projects for user %s", session.get("username"));
-		//List<project> projects = project.findAll();
+
         User user = User.find("email", session.get("username")).first();
         List<Project> projects = Project.find("owner", user).asList();
 
