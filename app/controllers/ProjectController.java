@@ -18,8 +18,8 @@ public class ProjectController extends Controller {
 
 		Project project = new Project();
 
-		// Retrieving user
-		// TODO Get the real user when authentication is enabled
+		// Retrieving User
+		// TODO Get the real User when authentication is enabled
 		Logger.info("Retrieving project owner %s", "admin");
 		User user = User.find("byUsername", "admin").first();
 		
@@ -134,7 +134,7 @@ public class ProjectController extends Controller {
         User user = User.find("email", session.get("username")).first();
         List<Project> projects = Project.find("owner", user).asList();
 
-		render("Project/projectList.html", projects);
+		render("project/projectList.html", projects);
 	}
 
 	/**
