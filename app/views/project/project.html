@@ -107,7 +107,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             //Init openstreet map
-            if ($('#mapEnabled')){
+            if ($('#mapEnabled').length > 0){
                 options={
                     'latitude' : '${project.latitude}',
                     'longitude' : '${project.longitude}'
