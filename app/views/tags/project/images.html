@@ -12,7 +12,7 @@
 <div class="row span9 imageList">
 	<ul class="imageList">
         #{list _project.images, as:'image', }
-            <li><img height="150px" width="150px" class="shadow" src=${image.url} /></li>
+            <li><img class="shadow" src=${image.url} /></li>
         #{/list}
         <li style="display:none"><img alt="image"
                  height="0" width="0" id="image-preview" /> <br />Preview</li>

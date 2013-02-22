@@ -32,51 +32,43 @@
         <hr/>
     </div>
 
-	<!-- PHOTO CAROUSEL -->
-	<div id="projectCarousel" class="carousel span11">
-		<!-- Carousel items -->
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="http://placehold.it/400x340" alt="">
-				<div class="carousel-caption">
-					<h4>First Photo label</h4>
-					<p>
-						This is the first photo info
-					</p>
-				</div>
-			</div>
-			<div class="item">
-				<img src="http://placehold.it/1200x340" alt="">
-				<div class="carousel-caption">
-					<h4>Second Photo label</h4>
-					<p>
-						This is the second photo info
-					</p>
-				</div>
-			</div>
-			<div class="item">
-				<img src="http://placehold.it/1200x340" alt="">
-				<div class="carousel-caption">
-					<h4>Third Photo label</h4>
-					<p>
-						This is the third photo info
-					</p>
-				</div>
-			</div>
-		</div>
-		<!-- Carousel nav -->
-		<a class="carousel-control left" href="#projectCarousel" data-slide="prev">&lsaquo;</a>
-		<a class="carousel-control right" href="#projectCarousel" data-slide="next">&rsaquo;</a>
-	</div>
+    <div class="row">
+        <!-- PHOTO CAROUSEL -->
+        <div class="span3">
+            <div id="projectCarousel" class="carousel slide" style="width:200px;height:200px">
+                *{Not supported by current bootstrap version}*
+                *{<ol class="carousel-indicators">}*
+                    *{#{list project.images, as:'image', }}*
+                        *{<li data-target="#projectCarousel" data-slide-to="${image_index}" class="${image_isFirst ? 'active' : ''}"></li>}*
+                    *{#{/list}}*
+                *{</ol>}*
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                #{list project.images, as:'image', }
+                    <div class="item ${image_isFirst ? 'active' : ''}">
+                        <img src=${image.url} />
+                    </div>
+                #{/list}
+                </div>
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#projectCarousel" data-slide="prev" >&lsaquo;</a>
+                <a class="carousel-control right" href="#projectCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+        </div>
+        <div id="projectInfo" class="span9">
+            <h3>${project.headline}</h3>
+            #{if project.goal != null && project.goal.length() > 0}
+                <h4>Goal</h4>
+            ${project.goal}
+        #{/if}
+        </div>
+    </div>
+
 
     <!-- CONTENT -->
     <div class="row projectContent">
         <div class="span9">
-            <h3>${project.headline}</h3>
-            #{if project.content_join != null && project.content_join.length() > 0}
-                <h4>How to join</h4>
-                ${project.content_join}
-            #{/if}
+
             #{if project.content_when != null && project.content_when.length() > 0}
                 <h4>When</h4>
                 ${project.content_when}
