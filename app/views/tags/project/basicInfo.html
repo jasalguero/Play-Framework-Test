@@ -1,6 +1,6 @@
 %{project = _project}%
 
-#{form @ProjectController.saveProject(), class:"form-horizontal"}
+
 <fieldset>
     <div class="sectionHeader">
         <h3>
@@ -29,7 +29,7 @@
 	<div class="control-group #{twErrorClass field.name/}">
 		<label class="control-label" for="&{field.name}" >&{'views.project.headline'}</label>
 		<div class="controls">
-			<textarea class="input-xlarge span5" id="headline" name="${field.name}" rows="3" placeholder="&{'views.project.headline.info'}">${field.value}</textarea>
+			<textarea class="input-xlarge span7" id="headline" name="${field.name}" rows="4" placeholder="&{'views.project.headline.info'}">${field.value}</textarea>
 			<span class="help-inline">#{error field.name /}</span>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
         <div class="control-group #{twErrorClass field.name/}">
             <label class="control-label" for="&{field.name}" >&{'views.project.subheadline'}</label>
             <div class="controls">
-                <textarea class="input-xlarge span5" id="subHeadline" name="${field.name}" rows="3" placeholder="&{'views.project.subheadline.info'}">${field.value}</textarea>
+                <textarea class="input-xlarge span7" id="subHeadline" name="${field.name}" rows="6" placeholder="&{'views.project.subheadline.info'}">${field.value}</textarea>
                 <span class="help-inline">#{error field.name /}</span>
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="control-group #{twErrorClass field.name/}">
             <label class="control-label" for="&{field.name}" >&{'views.project.subHeadline2'}</label>
             <div class="controls">
-                <textarea class="input-xlarge span5" id="subHeadline2" name="${field.name}" rows="3" placeholder="&{'views.project.subHeadline2.info'}">${field.value}</textarea>
+                <textarea class="input-xlarge span7" id="subHeadline2" name="${field.name}" rows="6" placeholder="&{'views.project.subHeadline2.info'}">${field.value}</textarea>
                 <span class="help-inline">#{error field.name /}</span>
             </div>
         </div>
@@ -62,7 +62,7 @@
         <div class="control-group #{twErrorClass field.name/}">
             <label class="control-label" for="&{field.name}" >&{'views.project.join'}</label>
             <div class="controls">
-                <textarea class="input-xlarge span5" id="join" name="${field.name}" rows="3" placeholder="&{'views.project.join.info'}">${field.value}</textarea>
+                <textarea class="input-xlarge span7" id="join" name="${field.name}" rows="6" placeholder="&{'views.project.join.info'}">${field.value}</textarea>
                 <span class="help-inline">#{error field.name /}</span>
             </div>
         </div>
@@ -73,7 +73,7 @@
         <div class="control-group #{twErrorClass field.name/}">
             <label class="control-label" for="&{field.name}" >&{'views.project.when'}</label>
             <div class="controls">
-                <textarea class="input-xlarge span5" id="when" name="${field.name}" rows="3" placeholder="&{'views.project.when.info'}">${field.value}</textarea>
+                <textarea class="input-xlarge span7" id="when" name="${field.name}" rows="6" placeholder="&{'views.project.when.info'}">${field.value}</textarea>
                 <span class="help-inline">#{error field.name /}</span>
             </div>
         </div>
@@ -84,7 +84,7 @@
         <div class="control-group #{twErrorClass field.name/}">
             <label class="control-label" for="&{field.name}" >&{'views.project.where'}</label>
             <div class="controls">
-                <textarea class="input-xlarge span5" id="where" name="${field.name}" rows="3" placeholder="&{'views.project.where.info'}">${field.value}</textarea>
+                <textarea class="input-xlarge span7" id="where" name="${field.name}" rows="6" placeholder="&{'views.project.where.info'}">${field.value}</textarea>
                 <span class="help-inline">#{error field.name /}</span>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="control-group #{twErrorClass field.name/}">
             <label class="control-label" for="&{field.name}" >&{'views.project.what'}</label>
             <div class="controls">
-                <textarea class="input-xlarge span5" id="what" name="${field.name}" rows="3" placeholder="&{'views.project.what.info'}">${field.value}</textarea>
+                <textarea class="input-xlarge span7" id="what" name="${field.name}" rows="6" placeholder="&{'views.project.what.info'}">${field.value}</textarea>
                 <span class="help-inline">#{error field.name /}</span>
             </div>
         </div>
@@ -106,29 +106,18 @@
         <div class="control-group #{twErrorClass field.name/}">
             <label class="control-label" for="&{field.name}" >&{'views.project.more'}</label>
             <div class="controls">
-                <textarea class="input-xlarge span5" id="more" name="${field.name}" rows="3" placeholder="&{'views.project.more.info'}">${field.value}</textarea>
+                <textarea class="input-xlarge span7" id="more" name="${field.name}" rows="6" placeholder="&{'views.project.more.info'}">${field.value}</textarea>
                 <span class="help-inline">#{error field.name /}</span>
             </div>
         </div>
     #{/}
-
-	*{<!-- DESCRIPTION -->}*
-	*{#{field 'project.description'}}*
-	*{<div class="control-group #{twErrorClass field.name/}">}*
-		*{<label class="control-label" for="&{field.name}" >&{'views.project.description'}</label>}*
-		*{<div class="controls">}*
-			*{<textarea class="input-xxlarge span5" id="${field.name}" name="${field.name}" rows="10" placeholder="&{'views.project.description.info'}">${field.value}</textarea>}*
-			*{<span class="help-inline">#{error field.name /}</span>}*
-		*{</div>}*
-	*{</div>}*
-	*{#{/}}*
 
 	<!-- GOAL -->
 	#{field 'project.goal'}
 	<div class="control-group #{twErrorClass field.name/}">
 		<label class="control-label" for="&{field.name}" >&{'views.project.goal'}</label>
 		<div class="controls">
-			<input type="text" class="input-xlarge span5" id="${field.name}" name="${field.name}" value="${field.value}" placeholder="&{'views.project.goal.info'}"/>
+			<input type="text" class="input-xlarge span7" id="${field.name}" name="${field.name}" value="${field.value}" placeholder="&{'views.project.goal.info'}"/>
 			<span class="help-inline">#{error field.name /}</span>
 		</div>
 	</div>
@@ -139,13 +128,13 @@
 	<div class="control-group #{twErrorClass field.name/}">
 		<label class="control-label" for="&{field.name}" >&{'views.project.city'}</label>
 		<div class="controls">
-			#{select 'project.city._id', items:_cities, valueProperty:'id', labelProperty:'name', id:'city', value:project.city._id, class:"span5" /}
+			#{select 'project.city._id', items:_cities, valueProperty:'id', labelProperty:'name', id:'city', value:project.city._id, class:"span7" /}
 
-			<!-- <select id="${field.name}" name="project.city.id" value="" size="1" id="select">
-				#{list _cities, as:'city'}
-				<option value="city" ${project.city.equals(city) ? 'selected' : ''} >${city.name}</option>
-				#{/list}
-			</select> -->
+			*{<!-- <select id="${field.name}" name="project.city.id" value="" size="1" id="select">}*
+				*{#{list _cities, as:'city'}}*
+				*{<option value="city" ${project.city.equals(city) ? 'selected' : ''} >${city.name}</option>}*
+				*{#{/list}}*
+			*{</select> -->}*
 			<span class="help-inline">#{error field.name /}</span>
 		</div>
 	</div>
@@ -157,7 +146,7 @@
 	<div class="control-group">
 		<label class="control-label" for="&{field.name}">&{'views.project.category'}</label>
 		<div class="controls">
-			<select id="${field.name}" name="project.categories._id" value="" size="1" id="select" multiple class="span5" >
+			<select id="${field.name}" name="project.categories._id" value="" size="1" id="select" multiple class="span7" >
 				#{list _categories, as:'category'}
 				<option value="${category.id}" ${project.categories.contains(category) ? 'selected' : ''} >${category.name}</option>
 				#{/list}
@@ -185,4 +174,3 @@
 		</button>
 	</div>
 </fieldset>
-#{/form}

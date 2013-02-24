@@ -4,7 +4,6 @@
 <div class="container">
 
 	<!-- HEADER -->
-
         <div class="span12">
             <h1>These are your current projects</h1>
         </div>
@@ -40,9 +39,9 @@
 						<td> ${project.name} </td>
 						<td> ${project.headline} </td>
                         <td> </td>
-						<td class="span1"> #{a @@ProjectController.showProject(project.id)}<i class="icon-search"></i> #{/a} </td>
-						<td class="span1"> #{a @ProjectController.editProject(project.id)}<i class="icon-edit"></i> #{/a} </td>
-						<td class="span1"> #{a @@ProjectController.deleteProject(project.id)}<i class="icon-trash"></i> #{/a} </td>
+						<td class="span1"> #{a @@ProjectController.showProject(project.id)}<i class="icon-search icon-2x"></i> #{/a} </td>
+						<td class="span1"> #{a @ProjectController.editProject(project.id)}<i class="icon-edit icon-2x"></i> #{/a} </td>
+						<td class="span1"> #{a @@ProjectController.deleteProject(project.id)}<i class="icon-trash icon-2x"></i> #{/a} </td>
 					</tr>
 					#{/}
 				</tbody>

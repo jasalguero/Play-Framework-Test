@@ -22,7 +22,7 @@ public class Application extends Controller {
 	public static void showImageList() {
 		List<BlobImage> images = BlobImage.findAll();
 
-		render("Application/imageList.html", images);
+		render("application/imageList.html", images);
 	}
 
 	public static void homepage() {

@@ -1,20 +1,28 @@
 
+<!-- NAVIGATION MENU -->
 <nav>
     <div id="navbar" class="navbar navbar-static">
         <div class="navbar-inner">
             <div class="container" style="width: auto;">
                 <a class="brand" id="navbar-logo" href="/"><img src="@{'/public/images/logo.jpg'}" alt="&{'views.tags.logo.alt'}"></a>
+                <!-- CREATE PROJECT -->
                 <ul class="nav" role="navigation">
                     <li>
                         <div class="span2 menuItem">
                             <h4>#{a @ProjectController.newProject()}&{'views.tags.createExperience'}#{/a}</h4>
                         </div>
                     </li>
-                    <li>
-                        <div class="span2 menuItem">
-                            <h4>#{a @ProjectController.projectList()}&{'views.tags.findExperiences'}#{/a}</h4>
-                        </div>
-                    </li>
+
+                    <!-- IF USER IS LOGGED, MANAGE USER PROJECTS -->
+                    #{if session.username}
+                        <li>
+                            <div class="span2 menuItem">
+                                <h4>#{a @ProjectController.projectList()}&{'views.tags.findExperiences'}#{/a}</h4>
+                            </div>
+                        </li>
+                    #{/if}
+
+                    <!-- LOGIN / LOGOUT -->
                     <li>
                         <div class="span2 menuItem">
                             #{if session.username}
@@ -23,35 +31,31 @@
                             #{else}
                                 <h4>#{a @Secure.login()}&{'views.tags.registerLogin'}#{/a}</h4>
                             #{/else}
-
                         </div>
                     </li>
 
                 </ul>
                 <ul class="nav pull-right menuItem span4">
+                    <!-- SHOW USER NAME -->
                     <li>
                         #{if session.username}
                             <div class="loggedUser navbar-text">&{'views.tags.loggedAs'} <br/><a href="#">&{session.username}</a></div>
                         #{/if}
                     </li>
+
+                    <!-- LANGUAGE SELECTOR -->
                     <li id="fat-menu" class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> &{'menu.languages'} <b class="caret"></b> </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> &{'menu.languages'} <b class="caret"></b> </a>
                         <ul class="dropdown-menu " role="menu" aria-labelledby="drop3">
                             <li>
-                            #{a @Application.changeLang('en',request.url)}&{'menu.languages.english'}#{/a}
+                                #{a @Application.changeLang('en',request.url)}&{'menu.languages.english'}#{/a}
                             </li>
                             <li>
-
-                            #{a @Application.changeLang('es',request.url)}&{'menu.languages.spanish'}#{/a}
+                                #{a @Application.changeLang('es',request.url)}&{'menu.languages.spanish'}#{/a}
                             </li>
                             <li>
-
-                            #{a @Application.changeLang('de',request.url)}&{'menu.languages.german'}#{/a}
+                                #{a @Application.changeLang('de',request.url)}&{'menu.languages.german'}#{/a}
                             </li>
-                            <!-- ACTIVATE WHEN USER REGISTRATION -->
-                            <!--<p class="navbar-text pull-right">
-                            Logged in as <a href="#">username</a>
-                            </p>-->
                         </ul>
                     </li>
                 </ul>

@@ -97,7 +97,7 @@
 
 	font-size: 18px;
 	text-align: center;
-    text-shadow: rgba(18, 54, 9, 0.46) 0px 2px 5px;
+    /*text-shadow: rgba(18, 54, 9, 0.46) 0px 2px 5px;*/
 }
 
 .menuItem h4 > a:hover {
@@ -131,7 +131,7 @@
 }
 
 .page-header{
-    text-shadow: rgba(18, 54, 9, 0.7) 0px 2px 5px;
+    /*text-shadow: rgba(18, 54, 9, 0.7) 0px 2px 5px;*/
 }
 
 
@@ -204,7 +204,7 @@
 .bs-docs-sidenav.affix-bottom {
     position: absolute;
     top: auto;
-    bottom: 270px;
+    bottom: 200px;
 }
 
 
@@ -331,8 +331,8 @@ input[type="text"], input[type="password"], .input-append .add-on, .input-prepen
 }
 
 .eventPreviewContainer {
-	width: 270px;
-	height: 180px;
+	width: 200px;
+	height: 200px;
 }
 
 .eventPreview captions {
@@ -368,8 +368,8 @@ input[type="text"], input[type="password"], .input-append .add-on, .input-prepen
 	display: none;
 	position: absolute;
 	color: #333;
-	width: 270px;
-	height: 180px;
+	width: 200px;
+	height: 200px;
 	/*background-image: url("../images/bg-dark-85.png");*/
 	background-color: black;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -465,11 +465,16 @@ div.preview.loading {
 
 #mapResultTitle {
 	font-weight: bold;
+    font-size: 21px;
+}
+
+.mapControls {
+    margin-bottom: 25px;
 }
 
 .thumbnail{
-    width:260px;
-    height:260px;
+    width:200px;
+    height:200px;
     float:left;
 }
 
@@ -502,8 +507,8 @@ div.preview.loading {
     font-family: SansationBold;
 }
 
-.projectContent .projectMap{
-    height: 250px;
+.projectContent{
+
 
 }
 

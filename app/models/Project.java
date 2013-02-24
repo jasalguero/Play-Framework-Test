@@ -65,6 +65,12 @@ public class Project extends Model {
 	
 	@Reference
 	public City city;
+
+    public String displayAddress;
+
+    public String longitude;
+
+    public String latitude;
 	
 	/**
 	 * Returns all the possible cities based

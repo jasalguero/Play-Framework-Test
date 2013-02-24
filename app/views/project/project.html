@@ -1,0 +1,112 @@
+#{extends 'parentTemplate.html' /}
+#{set title:'Project' /}
+
+#{set 'moreStyles'}
+    #{stylesheet 'leaflet.css' /}
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="/public/stylesheets/leaflet.ie.css" />
+<![endif]-->
+#{/set}
+
+<div class="container background">
+
+	<!-- TITLE -->
+	<div class="row">
+		<div class="span8 page-header">
+			<h1>${project.name}</h1>
+		</div>
+	</div>
+	<!-- HEADER -->
+	<div class="row headlineRow">
+		<!-- PHOTO -->
+		<div class="span2 thumbnail">
+			<img src="http://placehold.it/260x260" alt="">
+		</div>
+        <div class="span9">
+            <span class="headline">${project.headline}</span><br/><br/>
+            <span>${project.subHeadLine}</span><br/><br/>
+            <span>${project.subHeadLine2}</span>
+        </div>
+	</div>
+    <div class="row separator">
+        <hr/>
+    </div>
+
+    <div class="row">
+        <!-- PHOTO CAROUSEL -->
+        <div class="span3">
+            <div id="projectCarousel" class="carousel slide" style="width:200px;height:200px">
+                *{Not supported by current bootstrap version}*
+                *{<ol class="carousel-indicators">}*
+                    *{#{list project.images, as:'image', }}*
+                        *{<li data-target="#projectCarousel" data-slide-to="${image_index}" class="${image_isFirst ? 'active' : ''}"></li>}*
+                    *{#{/list}}*
+                *{</ol>}*
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                #{list project.images, as:'image', }
+                    <div class="item ${image_isFirst ? 'active' : ''}">
+                        <img src=${image.url} />
+                    </div>
+                #{/list}
+                </div>
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#projectCarousel" data-slide="prev" >&lsaquo;</a>
+                <a class="carousel-control right" href="#projectCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+        </div>
+        <div id="projectInfo" class="span9">
+            <h3>${project.headline}</h3>
+            #{if project.goal != null && project.goal.length() > 0}
+                <h4>Goal</h4>
+            ${project.goal}
+        #{/if}
+        </div>
+    </div>
+
+
+    <!-- CONTENT -->
+    <div class="row projectContent">
+        <div class="span9">
+
+            #{if project.content_when != null && project.content_when.length() > 0}
+                <h4>When</h4>
+                ${project.content_when}
+            #{/if}
+            #{if project.content_where != null && project.content_where.length() > 0}
+                <h4>Where</h4>
+                <p>${project.content_where}</p>
+                #{if project.latitude != null && project.latitude.length() > 0}
+                    <div id="mapContainer" style="height:300px">
+                    </div>
+                    <input type="hidden" id="mapEnabled" value="true"/>
+                #{/if}
+                <br/>
+            #{/if}
+            #{if project.content_what != null && project.content_what.length() > 0}
+                <h4>What exactly</h4>
+                ${project.content_what}
+            #{/if}
+        </div>
+        <div class="span3" style="height:500px; background-color:blue">
+        </div>
+    </div>
+</div>
+
+#{set 'moreScripts'}
+    #{script 'leaflet.js' /}
+    #{script 'map.js' /}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //Init openstreet map
+            if ($('#mapEnabled').length > 0){
+                options={
+                    'latitude' : '${project.latitude}',
+                    'longitude' : '${project.longitude}'
+                }
+                createMap(options);
+            }
+
+        });
+    </script>
+#{/set}

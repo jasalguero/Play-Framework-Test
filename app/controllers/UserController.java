@@ -14,7 +14,7 @@ public class UserController extends Controller {
      */
     public static void showForm() {
         List<Country> allCountries = Country.q().order("_id").asList();
-        render("User/newUser.html", allCountries);
+        render("user/newUser.html", allCountries);
     }
 
     public static void createUser(User user){
