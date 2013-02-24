@@ -2,12 +2,20 @@ package models;
 
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Reference;
+
+import play.data.validation.CheckWith;
+import play.data.validation.Required;
 import play.modules.morphia.Model;
+
+import controllers.validators.*;
 
 @Entity
 public class User extends Model {
 	
+	@Required
+	@CheckWith(value = UserExist.class, message = "views.user.error.exists")
 	public String email;
+	@Required
 	public String password;
 	public String username;
 	public int userType;

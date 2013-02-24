@@ -80,3 +80,8 @@ views.user.password.info=Your account password
 views.user.password=Password
 views.user.username.info=Your name
 views.user.username=Name
+
+#Validation message
+validation.required = %s is required
+user.password = Password
+user.email = Email
