@@ -47,13 +47,13 @@ public class ModelBasicTests extends UnitTest {
 	public void createUser() {
 		Logger.info("Inside user model test");
 		// Retrieve country
-		Country global = Country.find("byName","GLOBAL").first();
+//		Country global = Country.find("byName","GLOBAL").first();
 
 		// Get user list
 		List<User> beforeList = User.findAll();
 		
 		// Create a new user and save it
-		new User("test@senseship.com", "1234", "firstUserTest", global, Constants.UserType.ADMIN.getId()).save();
+		new User("test@senseship.com", "1234", "firstUserTest", Constants.UserType.ADMIN.getId()).save();
 	
 
 		// Retrieve the user with e-mail address test@senseship.com
@@ -72,9 +72,9 @@ public class ModelBasicTests extends UnitTest {
     public void tryConnectAsUser() {
         Logger.info("Inside user model test");
         // Retrieve country
-        Country global = Country.find("byName","GLOBAL").first();
+        //Country global = Country.find("byName","GLOBAL").first();
         // Create a new user and save it
-        new User("test@senseship.com", "1234", "firstUserTest", global, Constants.UserType.ADMIN.getId()).save();
+        new User("test@senseship.com", "1234", "firstUserTest", Constants.UserType.ADMIN.getId()).save();
 
         // Test
         assertNotNull(User.connect("test@senseship.com", "1234"));

@@ -12,14 +12,14 @@ public class User extends Model {
 	public String username;
 	public int userType;
 
-	@Reference
-	public Country country;
+//	@Reference
+//	public Country country;
 
-	public User(String email, String password, String fullname, Country country, int userType) {
+	public User(String email, String password, String fullname, int userType) {
 		this.email = email;
 		this.password = password;
 		this.username = fullname;
-		this.country = country;
+//		this.country = country;
 		this.userType = userType;
 	}
 
