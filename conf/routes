@@ -11,8 +11,6 @@ GET     /                                       Application.homepage
 # Users
 GET     /register								UserController.showForm
 POST    /user                                   UserController.createUser
-GET     /login                                  Secure.login
-GET     /logout                                 Secure.logout
 
 # Projects
 GET     /project								ProjectController.newProject
