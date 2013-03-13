@@ -14,6 +14,7 @@ static.data.germany=Portugal
 static.data.global=All
 static.data.portugal=Germany
 views.general.basicInfo=Basic Information
+views.general.basicInfo.caption=Basic information about the project, please be as detailed as possible so people can understand and participate in the project.
 views.general.images=Images
 views.homepage.button.find=Find
 views.homepage.button.random=Random\!

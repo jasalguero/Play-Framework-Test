@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import play.Logger;
+import play.Play;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -37,7 +38,7 @@ public class ProjectController extends Controller {
 
 			project.save();
 			Logger.info("New project created with id %s", project.getId());
-			
+
 			redirect("ProjectController.editProject", project.getId().toString());
 		} else {
 			flash.error("message", "project.creation.error");
