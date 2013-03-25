@@ -63,6 +63,15 @@ views.project.new.menu.location=Location
 views.project.nonProfit.info=Is this a non profit project?
 views.project.nonProfit=Non Profit
 views.project.update=Save changes\!
+views.project.list.header = These are your current projects
+views.project.list.table.name = Name
+views.project.list.table.headline = Headline
+views.project.list.table.date = Date Created
+views.project.list.table.actions = Actions
+views.project.show.goal = Goal
+views.project.show.when = When
+views.project.show.where = Where
+views.project.show.what = What exactly
 views.secure.login.form.email=Email\:
 views.secure.login.form.password=Password\:
 views.secure.login.header=Please login
@@ -83,8 +92,14 @@ views.user.password.info=Your account password
 views.user.password=Password
 views.user.username.info=Your name
 views.user.username=Name
+error.404.title = Not found
+error.404.header = Not found
+error.500.title = Application error
+error.500.header = Oops, an error occured
+error.500.exception = This exception has been logged with id
 
 #Validation message
 validation.required = %s is required
 user.password = Password
 user.email = Email
+
