@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="span4 offset4 page-header">
-            <h1>Registration</h1>
+            <h1>&{'views.user.header'}</h1>
         </div>
     </div>
 
@@ -89,7 +89,7 @@
             </div>
             <div class="span5">
                 <p id="new-user">
-                    <span>Already have an account? Login #{a @Secure.login()}here#{/a}</span>
+                    <span>&{'views.user.login'} #{a @Secure.login()}&{'views.user.login.link'}#{/a}</span>
                 </p>
             </div>
         </div>
