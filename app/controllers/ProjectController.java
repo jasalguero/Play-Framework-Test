@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import play.Logger;
+import play.Play;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -19,9 +20,8 @@ public class ProjectController extends Controller {
 		Project project = new Project();
 
 		// Retrieving User
-		// TODO Get the real User when authentication is enabled
-		Logger.info("Retrieving project owner %s", "admin");
-		User user = User.find("byUsername", "admin").first();
+		User user = User.find("byEmail", session.get("username")).first();
+        Logger.info("Retrieving project owner %s", user.username);
 		
 		// TODO Fix until better solution for initial null values in select
 		City city = City.get();
@@ -37,7 +37,7 @@ public class ProjectController extends Controller {
 
 			project.save();
 			Logger.info("New project created with id %s", project.getId());
-			
+
 			redirect("ProjectController.editProject", project.getId().toString());
 		} else {
 			flash.error("message", "project.creation.error");
@@ -133,6 +133,7 @@ public class ProjectController extends Controller {
 
         User user = User.find("email", session.get("username")).first();
         List<Project> projects = Project.find("owner", user).asList();
+        Logger.info("%s projects retrieved.", projects.size());
 
 		render("project/projectList.html", projects);
 	}

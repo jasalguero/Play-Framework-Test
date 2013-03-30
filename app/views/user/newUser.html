@@ -6,91 +6,97 @@
 
     <div class="row">
         <div class="span4 offset4 page-header">
-            <h1>Registration</h1>
+            <h1>&{'views.user.header'}</h1>
         </div>
     </div>
 
     <!-- NOTIFICATION -->
-    #{if flash.error}
+    #{ifErrors}
         <div class="row">
-            <div class="alert alert-error fade in span7 offset2">
-                <button class="close" data-dismiss="alert">
-                    ×
-                </button>
-            &{flash.error}
+            #{errors}
+                #{if error.key != 'user'}
+		            <div class="alert alert-error fade in span7 offset2">
+		                <button class="close" data-dismiss="alert">
+		                    ×
+		                </button>
+	                    ${error}
+	                </div>
+	            #{/if}
+            #{/errors}
+        </div>
+    #{/ifErrors}
+
+    #{form @UserController.createUser(), class:"form-horizontal"}
+
+        #{field 'user.email'}
+            <div class="row control-group #{twErrorClass field.name/}">
+                <div class="span3 offset2">
+                    <label class="control-label" for="${field.name}">&{'views.user.email'}</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge span4" id="email" name="${field.name}" value="${field.flash}" placeholder="&{'views.user.email.info'}"/>
+                        <!--  This error message is displayed in "NOTIFICATION" --> 
+                        <!-- <span class="help-inline">#{error field.name /}</span>  -->
+                    </div>
+                </div>
+            </div>
+        #{/}
+
+        #{field 'user.username'}
+            <div class="row control-group #{twErrorClass field.name/}">
+                <div class="span3 offset2">
+                    <label class="control-label" for="${field.name}">&{'views.user.username'}</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge span4" id="username" name="${field.name}" value="${field.flash}" placeholder="&{'views.user.username.info'}"/>
+                        <!--  This error message is displayed in "NOTIFICATION" -->
+                        <!-- <span class="help-inline">#{error field.name /}</span>  -->
+                    </div>
+                </div>
+            </div>
+        #{/}
+        #{field 'user.password'}
+            <div class="row control-group #{twErrorClass field.name/}">
+                <div class="span3 offset2">
+                    <label class="control-label" for="&{field.name}">&{'views.user.password'}</label>
+                    <div class="controls">
+                        <input type="password" class="input-xlarge span4" id="password" name="${field.name}"  placeholder="&{'views.user.password.info'}"/>
+                    </div>
+                </div>
+            </div>
+        #{/}
+        #{field 'user.country'}
+            <div class="row control-group #{twErrorClass field.name/}">
+                <div class="span3 offset2">
+                    <label class="control-label" for="&{field.name}">&{'views.user.country'}</label>
+                    <div class="controls">
+                        #{select field.name, items:allCountries, valueProperty:'id', labelProperty:'name', value: field.flash, id:'country', size:0, class:'span4 input-xlarge'/}
+                    </div>
+                </div>
+            </div>
+        #{/}
+        <!--<div class="row">
+            <div class="span3 offset3">
+                <p id="country-field">
+                    <label for="password">Country</label>
+                </p>
+            </div>
+            <div class="span5">
+            #{select 'country', items:allCountries, valueProperty:'id', labelProperty:'name', class:"span2 test", id:'country', size:0,class:'input-xlarge' /}
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="span3 offset3">
+
+            </div>
+            <div class="span5">
+                <p id="new-user">
+                    <span>&{'views.user.login'} #{a @Secure.login()}&{'views.user.login.link'}#{/a}</span>
+                </p>
             </div>
         </div>
-    #{/if}
-
-    *{#{form @UserController.createUser(), class:"form-horizontal"}}*
-
-        *{#{field 'user.email'}}*
-            *{<div class="row control-group #{twErrorClass field.name/}">}*
-                *{<div class="span3 offset2">}*
-                    *{<label class="control-label" for="&{field.name}">&{'views.user.email'}</label>}*
-                    *{<div class="controls">}*
-                        *{<input type="text" class="input-xlarge span4" id="email" name="${field.name}" value="${field.value}" placeholder="&{'views.user.email.info'}"/>}*
-                        *{<span class="help-inline">#{error field.name /}</span>}*
-                    *{</div>}*
-                *{</div>}*
-            *{</div>}*
-        *{#{/}}*
-
-        *{#{field 'user.username'}}*
-            *{<div class="row control-group #{twErrorClass field.name/}">}*
-                *{<div class="span3 offset2">}*
-                    *{<label class="control-label" for="&{field.name}">&{'views.user.username'}</label>}*
-                    *{<div class="controls">}*
-                        *{<input type="text" class="input-xlarge span4" id="username" name="${field.name}" value="${field.value}" placeholder="&{'views.user.username.info'}"/>}*
-                        *{<span class="help-inline">#{error field.name /}</span>}*
-                    *{</div>}*
-                *{</div>}*
-            *{</div>}*
-        *{#{/}}*
-        *{#{field 'user.password'}}*
-            *{<div class="row control-group #{twErrorClass field.name/}">}*
-                *{<div class="span3 offset2">}*
-                    *{<label class="control-label" for="&{field.name}">&{'views.user.password'}</label>}*
-                    *{<div class="controls">}*
-                        *{<input type="password" class="input-xlarge span4" id="password" name="${field.name}"  placeholder="&{'views.user.password.info'}"/>}*
-                    *{</div>}*
-                *{</div>}*
-            *{</div>}*
-        *{#{/}}*
-        *{<!--#{field 'user.country'}-->}*
-            *{<!--<div class="row control-group #{twErrorClass field.name/}">-->}*
-                *{<!--<div class="span3 offset2">-->}*
-                    *{<!--<label class="control-label" for="&{field.name}">&{'views.user.country'}</label>-->}*
-                    *{<!--<div class="controls">-->}*
-                        *{<!--#{select 'user.country', items:allCountries, valueProperty:'id', labelProperty:'name', id:'country', size:0, class:'span4 input-xlarge'/}-->}*
-                    *{<!--</div>-->}*
-                *{<!--</div>-->}*
-            *{<!--</div>-->}*
-        *{<!--#{/}-->}*
-        *{<!--<div class="row">}*
-            *{<div class="span3 offset3">}*
-                *{<p id="country-field">}*
-                    *{<label for="password">Country</label>}*
-                *{</p>}*
-            *{</div>}*
-            *{<div class="span5">}*
-            *{#{select 'country', items:allCountries, valueProperty:'id', labelProperty:'name', class:"span2 test", id:'country', size:0,class:'input-xlarge' /}}*
-            *{</div>}*
-        *{</div>-->}*
-        *{<div class="row">}*
-            *{<div class="span3 offset3">}*
-
-            *{</div>}*
-            *{<div class="span5">}*
-                *{<p id="new-user">}*
-                    *{<span>Already have an account? Login #{a @Secure.login()}here#{/a}</span>}*
-                *{</p>}*
-            *{</div>}*
-        *{</div>}*
-        *{<div class="row">}*
-            *{<div class="span4 offset4">}*
-                *{<input type="submit" class="btn btn-custom btn-success span4 offset3" id="registering" value="Create Account" />}*
-            *{</div>}*
-        *{</div>}*
-    *{#{/form}}*
+        <div class="row">
+            <div class="span4 offset4">
+                <input type="submit" class="btn btn-custom btn-success span4 offset3" id="registering" value="Create Account" />
+            </div>
+        </div>
+    #{/form}
 </div>

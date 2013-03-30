@@ -4,6 +4,7 @@ import models.Country;
 import models.User;
 import play.Logger;
 import play.mvc.Controller;
+import play.data.validation.*;
 
 import java.util.List;
 
@@ -16,12 +17,12 @@ public class UserController extends Controller {
         List<Country> allCountries = Country.q().order("_id").asList();
         render("user/newUser.html", allCountries);
     }
-
-    public static void createUser(User user){
-
-        if (userExists(user)){
-            Logger.info("User already exists, writing error");
-            flash.error("views.user.error.exists");
+    
+    public static void createUser(@Valid User user){
+        if (Validation.hasErrors()){
+            Logger.info("Found errors");
+            Validation.keep();
+            params.flash();
             showForm();
         }else{
             Logger.info("Creating new user...");
@@ -31,18 +32,4 @@ public class UserController extends Controller {
         }
 
     }
-
-    /**
-     *
-     * @param user
-     */
-    private static boolean userExists(User user) {
-        User oldUser = User.find("byEmail", user.email).first();
-        if (oldUser != null){
-            return Boolean.TRUE;
-        }else{
-            return Boolean.FALSE;
-        }
-    }
-
 }

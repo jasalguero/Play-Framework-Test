@@ -8,7 +8,7 @@
     <!-- HEADER -->
     <div class="row">
         <div class="span4 offset4 page-header">
-            <h1>Please login</h1>
+            <h1>&{'views.secure.login.header'}</h1>
         </div>
     </div>
 
@@ -35,7 +35,7 @@
         <div class="controls controls-row">
             <div class="span3 offset3">
                 <p id="username-field">
-                    <label for="email">Email:</label>
+                    <label for="email">&{'views.secure.login.form.email'}</label>
                 </p>
             </div>
             <div class="span5">
@@ -45,7 +45,7 @@
         <div class="controls controls-row">
             <div class="span3 offset3">
                 <p id="password-field">
-                    <label for="password">Password:</label>
+                    <label for="password">&{'views.secure.login.form.password'}</label>
                 </p>
             </div>
             <div class="span5">
@@ -55,12 +55,12 @@
         <div class="controls controls-row">
             <div class="controls span3 offset3">
                 <label class="checkbox" for="remember">
-                    <input type="checkbox" class="regular-checkbox input-xlarge" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} /> Remember me
+                    <input type="checkbox" class="regular-checkbox input-xlarge" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} /> &{'views.secure.login.remember'}
                 </label>
             </div>
             <div class="span5">
                 <p id="new-user">
-                    <span>New user? Register for free #{a @UserController.showForm()}here#{/a}</span>
+                    <span>&{'views.secure.login.newUser'} #{a @UserController.showForm()}&{'views.secure.login.newUser.link'}#{/a}</span>
                 </p>
             </div>
         </div>

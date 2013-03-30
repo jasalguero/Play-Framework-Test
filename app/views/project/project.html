@@ -58,7 +58,7 @@
         <div id="projectInfo" class="span9">
             <h3>${project.headline}</h3>
             #{if project.goal != null && project.goal.length() > 0}
-                <h4>Goal</h4>
+                <h4>&{'views.project.show.goal'}</h4>
             ${project.goal}
         #{/if}
         </div>
@@ -70,11 +70,11 @@
         <div class="span9">
 
             #{if project.content_when != null && project.content_when.length() > 0}
-                <h4>When</h4>
+                <h4>&{'views.project.show.when'}</h4>
                 ${project.content_when}
             #{/if}
             #{if project.content_where != null && project.content_where.length() > 0}
-                <h4>Where</h4>
+                <h4>&{'views.project.show.where'}</h4>
                 <p>${project.content_where}</p>
                 #{if project.latitude != null && project.latitude.length() > 0}
                     <div id="mapContainer" style="height:300px">
@@ -84,7 +84,7 @@
                 <br/>
             #{/if}
             #{if project.content_what != null && project.content_what.length() > 0}
-                <h4>What exactly</h4>
+                <h4>&{'views.project.show.what'}</h4>
                 ${project.content_what}
             #{/if}
         </div>
