@@ -59,7 +59,7 @@ public class Bootstrap extends Job {
 		Country germany = Country.find("name", COUNTRY_GERMANY).get();
 		User user = User.find("username","admin").get();
 		
-		user.country = germany;
+		//user.country = germany;
 		user.save();
 	}
  

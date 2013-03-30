@@ -58,7 +58,7 @@ function createMap(options) {
         'clickable' : false,
         'draggable' : false,
         'zoom' : OSM_DEFAULT_ZOOM
-    }
+    };
     createMarker(options.latitude, options.longitude, markerOptions);
 }
 

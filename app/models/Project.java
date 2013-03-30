@@ -9,6 +9,8 @@ import utils.Constants.UserType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static utils.Constants.COUNTRY_GERMANY;
+
 @Entity
 public class Project extends Model {
  
@@ -79,11 +81,12 @@ public class Project extends Model {
 	 */
 	public List<City> getPossibleCities(){
 		List<City> result = new ArrayList<City>();
-		if (owner != null && owner.country != null){
+		if (owner != null){
 			if (owner.userType == UserType.ADMIN.getId()){
 				result = City.find().order("name").asList();
 			}else{
-				result = City.find("Country", owner.country).order("name").asList();
+                //TODO: FIX
+				result = City.find("Country",COUNTRY_GERMANY).order("name").asList();
 			}
 		}	
 		return result;
