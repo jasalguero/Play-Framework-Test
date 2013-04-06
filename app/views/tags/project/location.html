@@ -47,6 +47,14 @@
     </button>
 </div>
 
-<script type="text/javascript" charset="utf-8">
-
-</script>
+#{set 'locationScripts'}
+    <script type="text/javascript" charset="utf-8">
+        $('#userAddress').keypress(function(e) {
+*{TODO RGB Hay que mejorar esto si selecciones el texto de la lista desplegable con el enter no funciona bien}*
+            e = e || event;
+            if ((e.keyCode || e.which) == 13)
+                return searchAddress();
+            return true;
+        });
+    </script>
+#{/set}
