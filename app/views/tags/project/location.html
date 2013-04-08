@@ -47,6 +47,14 @@
     </button>
 </div>
 
-<script type="text/javascript" charset="utf-8">
+#{set 'locationScripts'}
+    <script type="text/javascript" charset="utf-8">
+        $('#userAddress').keyup(function(e) {
+            e = e || event;
+            if ((e.keyCode || e.which) == 13)
+                return searchAddress();
 
-</script>
+            return true;
+        });
+    </script>
+#{/set}
